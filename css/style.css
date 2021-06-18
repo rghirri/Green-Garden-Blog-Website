@@ -91,11 +91,17 @@ button {
 }
 
 /* navbar-nav and nav-item begin */
+
 @media (min-width: 768px) {
   .navbar-expand-md .navbar-nav {
-    padding-top: 130px;
-    margin: auto;
-    width: 22%;
+    margin-top: 150px;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    left: 52%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
   #navbarNav > ul > li {
     padding-right: 90px;
