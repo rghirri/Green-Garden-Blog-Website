@@ -56,23 +56,22 @@
   <!-- Footer Start -->
   <footer>
     <!-- footer nav-links begin -->
-
-    <nav class="container-fluid">
-      <a href="#"><img id="nav-logo" src="uploads/Green-Garden-logo-100x100.png" alt="Green Garden Blog Logo" /></a>
-      <ul class="footer-nav text-uppercase">
-        <li class="footer-nav__item">
-          <a class="footer-nav__item-link" aria-current="page" href="#">home</a>
+    <div class="footer-nav container pt-5">
+      <a href="#"><img class="footer-nav__logo" src="uploads/Green-Garden-logo-100x100.png"
+          alt="Green Garden Blog Logo" /></a>
+      <ul class="footer-nav__lists">
+        <li class="footer-nav__list">
+          <a class="footer-nav__link" aria-current="page" href="#">home</a>
         </li>
-        <li class="footer-nav__item">
-          <a class="footer-nav__item-link" href="#">contact</a>
+        <li class="footer-nav__list">
+          <a class="footer-nav__link" href="#">contact</a>
         </li>
-        <li class="footer-nav__item">
-          <a class="footer-nav__item-link" href="#">login</a>
+        <li class="footer-nav__list">
+          <a class="footer-nav__link" href="#">login</a>
         </li>
       </ul>
-    </nav>
-
-    <!-- footer nav-links End -->
+      <p class="footer-nav__copy">Copyright &copy; 2021 Green Garden Blog. All rights reserved</p>
+    </div>
   </footer>
   <!-- Footer End -->
 </body>

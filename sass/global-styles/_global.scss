@@ -1,3 +1,4 @@
+@import "mixins";
 /* General styles begin */
 /* ----------------------------------------------- */
 /* BASIC SETUP begin */
@@ -41,9 +42,9 @@ h1 {
   text-transform: capitalize;
   font-size: 30px;
   color: #ffffff;
-  // @include atMedium {
-  //   font-size: 45px;
-  // }
+  @include atMedium {
+    font-size: 45px;
+  }
 }
 
 h2 {
