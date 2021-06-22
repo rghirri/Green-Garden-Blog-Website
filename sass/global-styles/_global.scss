@@ -1,0 +1,83 @@
+/* General styles begin */
+/* ----------------------------------------------- */
+/* BASIC SETUP begin */
+/* ----------------------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ----------------------------------------------- */
+/* BASIC SETUP end */
+/* ----------------------------------------------- */
+
+/* Font Begin */
+
+@font-face {
+  font-family: hero-font;
+  src: url(/vendor/font/Viaoda_Libre/ViaodaLibre-Regular.ttf);
+}
+
+@font-face {
+  font-family: basic-font;
+  src: url(/vendor/font/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: meta-font;
+  src: url(/vendor/font/Roboto/Roboto-BoldItalic.ttf);
+}
+
+h1 {
+  font-family: hero-font;
+  text-transform: capitalize;
+  font-size: 30px;
+  color: #ffffff;
+  @include atMedium {
+    font-size: 45px;
+  }
+}
+
+h2 {
+  font-family: basic-font;
+  text-transform: capitalize;
+  font-size: 25px;
+  color: #80b435;
+}
+
+#meta-data {
+  font-family: meta-font;
+  text-transform: capitalize;
+  font-size: 13px;
+  color: #405a1a;
+}
+
+p {
+  font-family: basic-font;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #545454;
+}
+
+button {
+  font-family: basic-font;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+
+/* Font End */
+
+/* General styles end */
+
+/* header styles start */
+
+/* Navbar styles begin*/

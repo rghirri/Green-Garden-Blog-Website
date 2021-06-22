@@ -1,0 +1,63 @@
+.navbar-brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#nav-logo {
+  display: block;
+  margin: auto;
+}
+
+/* navbar-nav and nav-item begin */
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-nav {
+    margin-top: 150px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-39%, -50%);
+  }
+  #navbarNav > ul > li {
+    padding-right: 90px;
+    text-align: inherit;
+  }
+}
+/* navbar-nav and nav-item end */
+.navbar-nav {
+  padding-top: 10px;
+}
+
+.nav-item {
+  padding-right: 0px;
+  text-align: center;
+}
+
+.navbar-toggler {
+  margin-top: 120px;
+}
+
+/* Overrirden bootstrap styles begin */
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: #80b435;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #80b435;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #545454;
+}
+
+/* Overrirden bootstrap styles begin */
+
+/* Navbar styles end*/
+
+/* header styles End */
