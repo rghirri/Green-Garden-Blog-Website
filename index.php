@@ -57,6 +57,21 @@
   <footer>
     <!-- footer nav-links begin -->
 
+    <nav class="container-fluid">
+      <a href="#"><img id="nav-logo" src="uploads/Green-Garden-logo-100x100.png" alt="Green Garden Blog Logo" /></a>
+      <ul class="footer-nav text-uppercase">
+        <li class="footer-nav__item">
+          <a class="footer-nav__item-link" aria-current="page" href="#">home</a>
+        </li>
+        <li class="footer-nav__item">
+          <a class="footer-nav__item-link" href="#">contact</a>
+        </li>
+        <li class="footer-nav__item">
+          <a class="footer-nav__item-link" href="#">login</a>
+        </li>
+      </ul>
+    </nav>
+
     <!-- footer nav-links End -->
   </footer>
   <!-- Footer End -->
