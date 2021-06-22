@@ -13,7 +13,6 @@ html,
 body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  background-color: #80b435;
 }
 
 /* ----------------------------------------------- */
@@ -42,9 +41,9 @@ h1 {
   text-transform: capitalize;
   font-size: 30px;
   color: #ffffff;
-  @include atMedium {
-    font-size: 45px;
-  }
+  // @include atMedium {
+  //   font-size: 45px;
+  // }
 }
 
 h2 {

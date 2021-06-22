@@ -1,7 +1,7 @@
-@import "/vendor/normalize.css";
-@import "global";
-@import "mixins";
-@import "variables";
-@import "primary-nav";
-@import "hero-banner";
-@import "footer";
+@import "normalize.css";
+@import "global-styles/global";
+@import "global-styles/mixins";
+@import "global-styles/variables";
+@import "modules/primary-nav";
+@import "modules/hero-banner";
+@import "modules/footer";
