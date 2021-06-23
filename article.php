@@ -1,5 +1,5 @@
 <?php require 'includes/database.php'; ?>
-<?php require 'includes/primary-nav.php'; ?>
+<?php require 'includes/header.php'; ?>
 
 
 <?php

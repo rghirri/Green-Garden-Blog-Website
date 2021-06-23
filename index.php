@@ -17,6 +17,21 @@ if ($results === false) {
 ?>
 <?php require 'includes/header.php'; ?>
 
+<!-- Hero Banner Start  -->
+<div class="hero-banner container-fluid container-xl">
+  <picture class="hero-banner__overlay">
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/Green-Garden-hero-banner-1295x264-min.png" alt="" />
+  </picture>
+
+  <div class="hero-banner__title">
+    <h1>The Green Garden Blog</h1>
+  </div>
+</div>
+
+<!-- Hero Banner End  -->
+</header>
+<!-- Header End  -->
+
 <!-- Post list begins -->
 
 <?php if (empty($articles)) : ?>
