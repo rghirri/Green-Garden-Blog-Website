@@ -1,5 +1,34 @@
+<?php require 'includes/database.php'; ?>
 <?php require 'includes/primary-nav.php'; ?>
 
+
+<?php
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+$sql = "SELECT *
+        FROM article
+        WHERE id = " . $_GET['id'];
+
+$results = mysqli_query($conn, $sql);
+
+if ($results === false) {
+
+    echo mysqli_error($conn);
+
+} else {
+
+    $article = mysqli_fetch_assoc($results);
+
+}
+
+}else{
+  $article = null;
+}
+
+?>
+
+<?php if ($article === null) : ?>
+<p>Article not found.</p>
+<?php else : ?>
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
   <picture class="hero-banner__overlay">
@@ -7,7 +36,7 @@
   </picture>
 
   <div class="hero-banner__title">
-    <h1>The Green Garden Blog</h1>
+    <h1><?= $article['title'] ?></h1>
   </div>
 </div>
 
@@ -22,45 +51,13 @@
     <div class="col-md-10 offset-md-1">
       <div class="single-post">
         <p id="meta-data">30 jun 2021 | Tools</p>
-        <p>Lorem ipsum dolor sit amet in phasellus euismod integer nec, aliquam arcu fringilla. Imperdiet purus feugiat
-          enim, volutpat, cursus, id sollicitudin vulputate nisi, volutpat efficitur malesuada phasellus mi elementum
-          dui.
-          Velit vitae, inceptos massa cras blandit, etiam sollicitudin leo, feugiat, fermentum. Sem, integer aliquet
-          nisl eu
-          ligula ante pretium laoreet, lectus neque, enim, euismod, nisi massa ipsum dui quisque. Interdum commodo
-          euismod
-          quisque ex risus inceptos non, porta, aptent tempor phasellus vel, sapien vulputate. Primis conubia
-          suspendisse
-          tellus, varius gravida non bibendum.
-
-          Lorem ipsum dolor sit amet in phasellus euismod integer nec, aliquam arcu fringilla. Imperdiet purus feugiat
-          enim,
-          volutpat, cursus, id sollicitudin vulputate nisi, volutpat efficitur malesuada phasellus mi elementum dui.
-          Velit
-          vitae, inceptos massa cras blandit, etiam sollicitudin leo, feugiat, fermentum. Sem, integer aliquet nisl eu
-          ligula ante pretium laoreet, lectus neque, enim, euismod, nisi massa ipsum dui quisque. Interdum commodo
-          euismod
-          quisque ex risus inceptos non, porta, aptent tempor phasellus vel, sapien vulputate. Primis conubia
-          suspendisse
-          tellus, varius gravida non bibendum.
-
-          Lorem ipsum dolor sit amet in phasellus euismod integer nec, aliquam arcu fringilla. Imperdiet purus feugiat
-          enim,
-          volutpat, cursus, id sollicitudin vulputate nisi, volutpat efficitur malesuada phasellus mi elementum dui.
-          Velit
-          vitae, inceptos massa cras blandit, etiam sollicitudin leo, feugiat, fermentum. Sem, integer aliquet nisl eu
-          ligula ante pretium laoreet, lectus neque, enim, euismod, nisi massa ipsum dui quisque. Interdum commodo
-          euismod
-          quisque ex risus inceptos non, porta, aptent tempor phasellus vel, sapien vulputate. Primis conubia
-          suspendisse
-          tellus, varius gravida non bibendum.
-
-        </p>
+        <p><?= $article["content"] ?></p>
         <button class="btn"><a href="/">Back to Previous</a></button>
       </div>
     </div>
   </div>
 </section>
+<?php endif; ?>
 
 <!-- Single post Ends -->
 

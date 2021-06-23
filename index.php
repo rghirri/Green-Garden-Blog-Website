@@ -1,31 +1,20 @@
+<?php require 'includes/database.php'; ?>
 <?php 
-$db_host = "localhost";
-$db_name = "green_garden_blog_db";
-$db_user ="ggb_cms";
-$db_pass ="rjQ2BtgiCz246XDe";
 
-$conn = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-$sql = "select *
+  $sql = "SELECT *
         FROM article
         ORDER BY published_at;";
-$result = mysqli_query($conn,$sql);   
 
-if ($result === false){
-  echo mysqli_error($conn);
-}else{
-  $articles = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$results = mysqli_query($conn, $sql);
 
+if ($results === false) {
+    echo mysqli_error($conn);
+} else {
+    $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
 }
 
-?>
 
+?>
 <?php require 'includes/header.php'; ?>
 
 <!-- Post list begins -->
@@ -46,9 +35,7 @@ if ($result === false){
             <p id="meta-data">22 feb 2021 | cooking</p>
             <p class=""><?= $article["content"] ?></p>
           </div>
-          <button class="btn"><a href="/article.php">Read More</a></button>
-
-
+          <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
         </div>
       </div>
 
@@ -70,7 +57,7 @@ if ($result === false){
             <p id="meta-data">30 jun 2021 | Tools</p>
             <p><?= $article['content'] ?></p>
           </div>
-          <button class="btn">Read More</button>
+          <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
         </div>
       </div>
     </div>
