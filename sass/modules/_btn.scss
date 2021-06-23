@@ -3,7 +3,6 @@
   font-size: 12px;
   text-transform: capitalize;
   background-color: $light-green;
-  color: $text-white;
   display: inline-block;
   padding: 5px 14px;
   font-weight: 300;
@@ -15,5 +14,9 @@
   &:hover {
     background-color: #405a1a;
     color: $text-white;
+  }
+  a {
+    color: $text-white;
+    text-decoration: none;
   }
 }

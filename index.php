@@ -46,7 +46,9 @@ if ($result === false){
             <p id="meta-data">22 feb 2021 | cooking</p>
             <p class=""><?= $article["content"] ?></p>
           </div>
-          <button class="btn">Read More</button>
+          <button class="btn"><a href="/article.php">Read More</a></button>
+
+
         </div>
       </div>
 
@@ -66,7 +68,7 @@ if ($result === false){
           <div class="post-list d-flex flex-column">
             <h2 class="post-list__title"><?= $article['title'] ?></h2>
             <p id="meta-data">30 jun 2021 | Tools</p>
-            <p class=""><?= $article['content'] ?></p>
+            <p><?= $article['content'] ?></p>
           </div>
           <button class="btn">Read More</button>
         </div>
