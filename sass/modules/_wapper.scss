@@ -1,0 +1,59 @@
+.wrapper {
+  overflow: hidden;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 0;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &--medium {
+    max-width: 1060px;
+  }
+
+  @include atSmall {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    max-width: 1236px;
+  }
+  // &--medium {
+  //   max-width: 976px;
+  // }
+
+  //   &--narrow {
+  //     max-width: 470px;
+  //   }
+
+  //   &--no-padding-until-medium {
+  //     padding-left: 0;
+  //     padding-right: 0;
+
+  //     @mixin atMedium {
+  //       padding-left: 18px;
+  //       padding-right: 18px;
+  //     }
+  //   }
+
+  //   &--no-padding-until-large {
+  //     padding-left: 0;
+  //     padding-right: 0;
+
+  //     @mixin atLarge {
+  //       padding-left: 18px;
+  //       padding-right: 18px;
+  //     }
+  //   }
+
+  //   .wrapper {
+  //     padding-left: 0;
+  //     padding-right: 0;
+  //   }
+
+  //   &--b-margin {
+  //     margin-bottom: 1rem;
+
+  //     @mixin atSmall {
+  //       margin-bottom: 3.875rem;
+  //     }
+  //   }
+}

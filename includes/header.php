@@ -40,9 +40,10 @@
     </nav>
     <!-- Navbar Links End  -->
     <!-- Hero Banner Start  -->
-    <div class="hero-banner container-lg">
+    <div class="hero-banner container-fluid container-xl">
       <picture class="hero-banner__overlay">
-        <img class="hero-banner__overlay-image" src="/uploads/Green-Garden-hero-banner-1295x264-min.png" alt="" />
+        <img class="hero-banner__overlay-image img-fluid" src="/uploads/Green-Garden-hero-banner-1295x264-min.png"
+          alt="" />
       </picture>
 
       <div class="hero-banner__title">

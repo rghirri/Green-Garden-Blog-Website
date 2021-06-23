@@ -1,0 +1,9 @@
+.post-list {
+  &__image {
+    padding-top: 10px;
+
+    @include atSmall {
+      padding-top: 0;
+    }
+  }
+}

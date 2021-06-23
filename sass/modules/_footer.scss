@@ -1,6 +1,6 @@
 /* footer styles begin */
 footer {
-  background-color: #e8e8e8;
+  background-color: $footer-bg;
   min-height: 280px;
 }
 
@@ -29,16 +29,19 @@ footer {
   }
   &__link {
     text-decoration: none;
-    color: #545454;
+    color: $basic-text-color;
     text-transform: uppercase;
     font-size: 14px;
+    &:hover {
+      color: $light-green;
+    }
   }
   &__copy {
     display: block;
     font-family: basic-font;
     text-transform: capitalize;
     font-size: 11px;
-    color: #545454;
+    color: $basic-text-color;
     padding-bottom: 20px;
   }
 }
