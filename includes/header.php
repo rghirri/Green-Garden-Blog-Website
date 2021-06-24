@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/vendor/bootstrap-5.0.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/vendor/normalize.css" />
+  <link rel="stylesheet" href="/vendor/jquery.datetimepicker.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
   <title>Green Garden Blog Home</title>
 </head>
@@ -26,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav text-uppercase">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">home</a>
+              <a class="nav-link active home_link" aria-current="page" href="/">home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/new-article.php">add article</a>

@@ -50,7 +50,10 @@ if ($results === false) {
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <div class="single-post">
-        <p id="meta-data">30 jun 2021 | Tools</p>
+        <p id="meta-data"><time datetime="<?= $article['published_at'] ?>"><?php
+                        $datetime = new DateTime($article['published_at']);
+                        echo $datetime->format("j F, Y");
+                    ?></time> | Tools</p>
         <p><?= $article["content"] ?></p>
         <button class="btn"><a href="/">Back to Previous</a></button>
       </div>

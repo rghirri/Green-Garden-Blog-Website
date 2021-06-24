@@ -49,7 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <form method="post">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" name="title" id="title" placeholder="Article title">
+          <input type="text" class="form-control" name="title" id="title" placeholder="Article title"
+            autocomplete="off">
         </div>
         <div class="mb-3">
           <label for="content" class="form-label">Content</label>
@@ -57,12 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             rows="3"></textarea>
         </div>
 
-        <div>
-          <label for="published_at">Publication date and time</label>
-          <input name="published_at" id="published_at">
+        <div class="mb-3">
+          <label for="published_at" class="form-label">Published Date</label>
+          <input class="form-control" name="published_at" id="published_at" placeholder="Published Date"
+            autocomplete="off">
         </div>
 
-        <button class="btn">add article</button>
+        <button class="btn mt-3 add_article_btn">add article</button>
 
       </form>
     </div>

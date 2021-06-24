@@ -39,16 +39,37 @@ if ($results === false) {
 <?php else : ?>
 
 <section class="wrapper  wrapper--medium">
-  <?php foreach ($articles as $article) : ?>
-  <?php if(!($article['id'] % 2 == 0 )) : ?>
+
+  <?php 
+  $i=0;
+  foreach ($articles as $article) : 
+  $i++;
+  if(!($i % 2 == 0 )) : 
+  
+  ?>
+
+
   <div class="row pt-5">
     <div class="col-md-6">
       <div class="row justify-content-center">
         <div class="col-10 col-lg-9">
           <div class="post-list d-flex flex-column">
             <h2 class="post-list__title"><?= $article['title'] ?></h2>
-            <p id="meta-data">22 feb 2021 | cooking</p>
-            <p class=""><?= $article["content"] ?></p>
+            <p id="meta-data"><time datetime="<?= $article['published_at'] ?>"><?php
+                        $datetime = new DateTime($article['published_at']);
+                        echo $datetime->format("j F, Y");
+                    ?></time> | cooking</p>
+            <p> <?php
+                      $string = $article["content"];
+                      $max = 150; // or 200, or whatever
+                      if(strlen($string) > $max) {
+                        // find the last space < $max:
+                        $shorter = substr($string, 0, $max+1);
+                        $string = substr($string, 0, strrpos($shorter, ' ')).'...';
+                      }
+                      echo $string; ?>
+
+            </p>
           </div>
           <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
         </div>
@@ -69,8 +90,21 @@ if ($results === false) {
         <div class="col-10 col-lg-9">
           <div class="post-list d-flex flex-column">
             <h2 class="post-list__title"><?= $article['title'] ?></h2>
-            <p id="meta-data">30 jun 2021 | Tools</p>
-            <p><?= $article['content'] ?></p>
+            <p id="meta-data"><time datetime="<?= $article['published_at'] ?>"><?php
+                        $datetime = new DateTime($article['published_at']);
+                        echo $datetime->format("j F, Y");
+                    ?></time> | Tools</p>
+            <p> <?php
+                      $string = $article["content"];
+                      $max = 150; // or 200, or whatever
+                      if(strlen($string) > $max) {
+                        // find the last space < $max:
+                        $shorter = substr($string, 0, $max+1);
+                        $string = substr($string, 0, strrpos($shorter, ' ')).'...';
+                      }
+                      echo $string; ?>
+
+            </p>
           </div>
           <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
         </div>

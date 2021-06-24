@@ -15,12 +15,14 @@
         <a class="footer-nav__link" href="#">login</a>
       </li>
     </ul>
-    <p class="footer-nav__copy">Copyright &copy; 2021 Green Garden Blog. All rights reserved</p>
+    <p class="footer-nav__copy">Copyright &copy; <?php echo date("Y");?> Green Garden Blog. All rights reserved</p>
   </div>
 </footer>
 <!-- Footer End -->
 </body>
 <script src="/vendor/jquery-3.6.0.min.js"></script>
 <script src="/vendor/bootstrap-5.0.1/js/bootstrap.min.js"></script>
+<script src="/vendor/jquery.datetimepicker.full.min.js"></script>
+<script src="/js/script.js"></script>
 
 </html>
