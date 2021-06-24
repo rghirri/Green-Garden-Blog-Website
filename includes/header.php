@@ -26,8 +26,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav text-uppercase">
-            <li class="nav-item">
-              <a class="nav-link active home_link" aria-current="page" href="/">home</a>
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="/">home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/new-article.php">add article</a>
