@@ -9,7 +9,6 @@ for (let i = 0; i < menuLength; i++) {
 }
 
 // date time picker
-// $("#published_at").datetimepicker();
 jQuery("#published_at").datetimepicker({
   format: "Y-m-d H:i:s"
 });
