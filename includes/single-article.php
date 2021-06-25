@@ -5,15 +5,16 @@
  *
  * @param $conn Connection to database
  * @param $id the article ID
+ * @param $columns Optional list of columns for the SELECT, defaults to *
  * 
  * @return $results an associative array containing the single article data.  
  */
 
 
 
-function singleArticle($conn, $id){
+function singleArticle($conn, $id, $columns = '*'){
 
-  $sql = "SELECT *
+  $sql = "SELECT $columns 
           FROM article 
           WHERE id = ?";
 
