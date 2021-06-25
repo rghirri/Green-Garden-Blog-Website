@@ -47,6 +47,7 @@ if (isset($_GET['id'])) {
         <p><?= htmlspecialchars($article["content"]); ?></p>
         <button class="btn"><a href="/">Back to Previous</a></button>
         <button class="btn"><a href="edit-article.php?id=<?= $article['id']; ?>">Edit article</a></button>
+        <button class="btn"><a href="delete-article.php?id=<?= $article['id']; ?>">Delete</a></button>
       </div>
     </div>
   </div>
