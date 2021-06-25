@@ -1,8 +1,9 @@
-<?php require 'includes/database.php'; ?>
-<?php require 'includes/header.php'; ?>
+<?php require 'includes/database.php'; 
 
 
-<?php
+$conn = getDB();
+
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 $sql = "SELECT *
         FROM article
@@ -26,6 +27,7 @@ if ($results === false) {
 
 ?>
 
+<?php require 'includes/header.php'; ?>
 <?php if ($article === null) : ?>
 <p>Article not found.</p>
 <?php else : ?>
@@ -36,7 +38,7 @@ if ($results === false) {
   </picture>
 
   <div class="hero-banner__title">
-    <h1><?= $article['title'] ?></h1>
+    <h1><?= htmlspecialchars($article['title']); ?></h1>
   </div>
 </div>
 
@@ -54,7 +56,7 @@ if ($results === false) {
                         $datetime = new DateTime($article['published_at']);
                         echo $datetime->format("j F, Y");
                     ?></time> | Tools</p>
-        <p><?= $article["content"] ?></p>
+        <p><?= htmlspecialchars($article["content"]); ?></p>
         <button class="btn"><a href="/">Back to Previous</a></button>
       </div>
     </div>

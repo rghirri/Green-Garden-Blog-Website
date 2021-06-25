@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Get the database connection
+ *
+ * @return object Connection to a MySQL server
+ */
+function getDB()
+{
 $db_host = "localhost";
 $db_name = "green_garden_blog_db";
 $db_user ="ggb_cms";
@@ -12,6 +19,5 @@ if (mysqli_connect_error()) {
     exit;
 }
 
-echo "Connected successfully";
-
-?>
+return $conn;
+}
