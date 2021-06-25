@@ -2,7 +2,7 @@
 
 require 'includes/database.php';
 
-$conn = getDB();
+$conn = dataBase_connect();
 
 
   $sql = "SELECT *

@@ -1,25 +1,13 @@
-<?php require 'includes/database.php'; 
+<?php 
+
+require 'includes/single-article.php';
+require 'includes/database.php';
+
+$conn = dataBase_connect();
 
 
-$conn = getDB();
-
-
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-$sql = "SELECT *
-        FROM article
-        WHERE id = " . $_GET['id'];
-
-$results = mysqli_query($conn, $sql);
-
-if ($results === false) {
-
-    echo mysqli_error($conn);
-
-} else {
-
-    $article = mysqli_fetch_assoc($results);
-
-}
+if (isset($_GET['id'])) {
+  $article = singleArticle($conn, $_GET['id']);
 
 }else{
   $article = null;
@@ -58,6 +46,7 @@ if ($results === false) {
                     ?></time> | Tools</p>
         <p><?= htmlspecialchars($article["content"]); ?></p>
         <button class="btn"><a href="/">Back to Previous</a></button>
+        <button class="btn"><a href="edit-article.php?id=<?= $article['id']; ?>">Edit article</a></button>
       </div>
     </div>
   </div>
