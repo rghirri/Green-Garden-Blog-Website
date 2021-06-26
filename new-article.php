@@ -1,56 +1,32 @@
 <?php
-require 'includes/database.php';
-require 'includes/single-article.php';
+require 'classes/Database.php';
+require 'classes/Article.php';
 require 'includes/url.php';
 
+// session_start();
 
-$title          = '';
-$content        = '';
-$published_at   = '';
+// if (! isLoggedIn()) {
+
+//     die("unauthorised");
+
+// }
+
+$article = new Article();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $title         = $_POST['title'];
-    $content       = $_POST['content'];
-    $published_at  = $_POST['published_at'];
-    
-    $errors = validateArticle($title, $content, $published_at);
-     
-     
-     if (empty($errors)){
+    $db = new Database();
+    $conn = $db->getConn();
 
-    $conn = dataBase_connect();
+    $article->title = $_POST['title'];
+    $article->content = $_POST['content'];
+    $article->published_at = $_POST['published_at'];
 
-    $sql = "INSERT INTO article (title, content, published_at) VALUES (?, ?, ?)";
+    if ($article->create($conn)) {
 
-    $stmt = mysqli_prepare($conn, $sql);
+        redirect("/article.php?id={$article->id}");
 
-    if ($stmt === false) {
-
-        echo mysqli_error($conn);
-
-    } else {
-
-        if ($published_at == ''){
-            $published_at = null;
-         }
-
-        mysqli_stmt_bind_param($stmt, "sss", $title  , $content, $published_at);
-
-        if (mysqli_stmt_execute($stmt)) {
-
-            $id = mysqli_insert_id($conn);
-
-            redirect("/article.php?id=$id");  
-
-        } else {
-
-            echo mysqli_stmt_error($stmt);
-
-        }
     }
-
-     }
 }
 
 ?>

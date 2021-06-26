@@ -1,13 +1,13 @@
 <?php 
+require 'classes/Article.php';
+require 'classes/Database.php';
 
-require 'includes/single-article.php';
-require 'includes/database.php';
-
-$conn = dataBase_connect();
+$db = new Database();
+$conn = $db->getConn();
 
 
 if (isset($_GET['id'])) {
-  $article = singleArticle($conn, $_GET['id']);
+  $article = Article::getByID($conn, $_GET['id']);
 
 }else{
   $article = null;
@@ -16,9 +16,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <?php require 'includes/header.php'; ?>
-<?php if ($article === null) : ?>
-<p>Article not found.</p>
-<?php else : ?>
+<?php if ($article) : ?>
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
   <picture class="hero-banner__overlay">
@@ -26,7 +24,7 @@ if (isset($_GET['id'])) {
   </picture>
 
   <div class="hero-banner__title">
-    <h1><?= htmlspecialchars($article['title']); ?></h1>
+    <h1><?= htmlspecialchars($article->title); ?></h1>
   </div>
 </div>
 
@@ -40,20 +38,23 @@ if (isset($_GET['id'])) {
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <div class="single-post">
-        <p id="meta-data"><time datetime="<?= $article['published_at'] ?>"><?php
-                        $datetime = new DateTime($article['published_at']);
+        <p id="meta-data"><time datetime="<?= $article->published_at ?>"><?php
+                        $datetime = new DateTime($article->published_at);
                         echo $datetime->format("j F, Y");
                     ?></time> | Tools</p>
-        <p><?= htmlspecialchars($article["content"]); ?></p>
+        <p><?= htmlspecialchars($article->content); ?></p>
         <button class="btn"><a href="/">Back to Previous</a></button>
-        <button class="btn"><a href="edit-article.php?id=<?= $article['id']; ?>">Edit article</a></button>
-        <button class="btn"><a href="delete-article.php?id=<?= $article['id']; ?>">Delete</a></button>
+        <button class="btn"><a href="edit-article.php?id=<?= $article->id; ?>">Edit article</a></button>
+        <button class="btn"><a href="delete-article.php?id=<?= $article->id; ?>">Delete</a></button>
       </div>
     </div>
   </div>
 </section>
-<?php endif; ?>
+
 
 <!-- Single post Ends -->
+<?php else : ?>
+<p>Article not found.</p>
+<?php endif; ?>
 
 <?php require 'includes/footer.php'; ?>

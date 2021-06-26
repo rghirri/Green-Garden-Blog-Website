@@ -1,22 +1,11 @@
 <?php 
 
-require 'includes/database.php';
+require 'classes/Database.php';
+require 'classes/Article.php';
 
-$conn = dataBase_connect();
-
-
-  $sql = "SELECT *
-        FROM article
-        ORDER BY published_at;";
-
-$results = mysqli_query($conn, $sql);
-
-if ($results === false) {
-    echo mysqli_error($conn);
-} else {
-    $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
-}
-
+$db = new Database();
+$conn = $db->getConn();
+$articles = Article::getAll($conn);
 
 ?>
 <?php require 'includes/header.php'; ?>
