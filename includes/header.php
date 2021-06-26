@@ -1,3 +1,7 @@
+<?php require 'includes/auth.php';?>
+<?php session_start();?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,14 +34,26 @@
               <a class="nav-link" aria-current="page" href="/">home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/new-article.php">add article</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">contact</a>
             </li>
+            <!-- login begin -->
+            <?php if (isLoggedIn()):?>
             <li class="nav-item">
-              <a class="nav-link" href="#">login</a>
+              <a class="nav-link" href="logout.php">
+                log out
+              </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/new-article.php">add article</a>
+            </li>
+            <?php else: ?>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">
+                log in
+              </a>
+            </li>
+            <?php endif; ?>
+            <!-- login end -->
           </ul>
         </div>
       </div>
