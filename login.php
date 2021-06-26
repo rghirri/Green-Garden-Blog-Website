@@ -6,7 +6,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if ($_POST['username'] == 'dave' && $_POST['password'] == 'secret') {
+    if ($_POST['username'] == 'rayaa' && $_POST['password'] == 'rayaa') {
 
         session_regenerate_id(true);
 
