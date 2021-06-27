@@ -2,7 +2,7 @@
 <footer>
   <!-- footer nav-links begin -->
   <div class="footer-nav container pt-5">
-    <a href="#"><img class="footer-nav__logo" src="uploads/Green-Garden-logo-100x100.png"
+    <a href="#"><img class="footer-nav__logo" src="../uploads/Green-Garden-logo-100x100.png"
         alt="Green Garden Blog Logo" /></a>
     <ul class="footer-nav__lists">
       <li class="footer-nav__list">

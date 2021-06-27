@@ -1,6 +1,10 @@
-<?php require 'classes/Auth.php';?>
-<?php session_start();?>
+<?php require dirname(__DIR__) . '/includes/init.php';
 
+$currentPage = $_SERVER['REQUEST_URI'];
+    if ($currentPage == "/admin/"  ){
+      Auth::requireLogin();
+      } 
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +26,7 @@
   <!-- Navbar Links Start  -->
   <nav class="navbar navbar-expand-md navbar-light bg-transparent">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img id="nav-logo" src="uploads/Green-Garden-Logo-130x130.png"
+      <a class="navbar-brand" href="/"><img id="nav-logo" src="../uploads/Green-Garden-Logo-130x130.png"
           alt="Green Garden Blog Logo" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,9 +41,9 @@
             <a class="nav-link" href="#">contact</a>
           </li>
           <!-- login begin -->
-          <?php if (Auth::isLoggedIn()):?>
+          <?php if (Auth::isLoggedIn() && ($currentPage == "/admin/"  )):?>
           <li class="nav-item">
-            <a class="nav-link" href="logout.php">
+            <a class="nav-link" href="/logout.php">
               log out
             </a>
           </li>
@@ -59,3 +63,5 @@
     </div>
   </nav>
   <!-- Navbar Links End  -->
+
+  <?php   

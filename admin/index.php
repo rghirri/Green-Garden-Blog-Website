@@ -3,11 +3,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require 'includes/header.php';
+require '../includes/header.php';
 
+Auth::requireLogin();
 
-
-$conn = require 'includes/db.php';
+$conn = require '../includes/db.php';
 
 $articles = Article::getAll($conn);
 
@@ -21,7 +21,7 @@ $articles = Article::getAll($conn);
   </picture>
 
   <div class="hero-banner__title">
-    <h1>The Green Garden Blog</h1>
+    <h1>The Green Garden Blog Admin</h1>
   </div>
 </div>
 
@@ -133,4 +133,4 @@ $articles = Article::getAll($conn);
 
 <!-- Post list Ends -->
 
-<?php require 'includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>

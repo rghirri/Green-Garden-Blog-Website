@@ -13,7 +13,7 @@ $conn = require 'includes/db.php';
 
         $_SESSION['is_logged_in'] = true;
 
-        Url::redirect('/');
+        Url::redirect('/admin/');
 
     } else {
 
@@ -23,7 +23,6 @@ $conn = require 'includes/db.php';
 }
 
 ?>
-<?php require 'includes/header.php'; ?>
 
 <h2>Login</h2>
 
@@ -46,5 +45,3 @@ $conn = require 'includes/db.php';
   <button>Log in</button>
 
 </form>
-
-<?php require 'includes/footer.php'; ?>
