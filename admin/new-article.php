@@ -3,14 +3,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require 'includes/init.php';
-// Auth::requireLogin();
+require '../includes/header.php';
+
+Auth::requireLogin();
 
 $article = new Article();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $conn = require 'includes/db.php';
+    $conn = require '../includes/db.php';
 
     $article->title = $_POST['title'];
     $article->content = $_POST['content'];
@@ -24,8 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
-<?php require 'includes/header.php'; ?>
 
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
@@ -48,4 +47,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </section>
 
-<?php require 'includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>

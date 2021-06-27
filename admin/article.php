@@ -49,8 +49,8 @@ if (isset($_GET['id'])) {
                     ?></time> | Tools</p>
         <p><?= htmlspecialchars($article->content); ?></p>
         <button class="btn"><a href="/admin/">Back to Previous</a></button>
-        <button class="btn"><a href="edit-article.php?id=<?= $article->id; ?>">Edit article</a></button>
-        <button class="btn"><a href="delete-article.php?id=<?= $article->id; ?>">Delete</a></button>
+        <button class="btn"><a href="/admin/edit-article.php?id=<?= $article->id; ?>">Edit article</a></button>
+        <button class="btn"><a href="/admin/delete-article.php?id=<?= $article->id; ?>">Delete</a></button>
       </div>
     </div>
   </div>

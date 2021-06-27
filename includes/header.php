@@ -43,7 +43,7 @@ $currentPage = $_SERVER['REQUEST_URI'];
           <!-- login begin -->
           <?php if (Auth::isLoggedIn()):?>
           <li class="nav-item">
-            <a class="nav-link" href="/new-article.php">add article</a>
+            <a class="nav-link" href="/admin/new-article.php">add article</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin">Admin</a>
