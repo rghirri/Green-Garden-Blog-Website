@@ -1,7 +1,7 @@
 <?php require dirname(__DIR__) . '/includes/init.php';
 
 $currentPage = $_SERVER['REQUEST_URI'];
-    if ($currentPage == "/admin/"  ){
+    if ($currentPage == "/admin/" || $currentPage == "/admin/article.php" ){
       Auth::requireLogin();
       } 
   ?>
@@ -17,7 +17,7 @@ $currentPage = $_SERVER['REQUEST_URI'];
   <link rel="stylesheet" href="/vendor/normalize.css" />
   <link rel="stylesheet" href="/vendor/jquery.datetimepicker.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
-  <title>Green Garden Blog Home</title>
+  <title>Green Garden Blog</title>
 </head>
 
 <body>
@@ -41,18 +41,25 @@ $currentPage = $_SERVER['REQUEST_URI'];
             <a class="nav-link" href="#">contact</a>
           </li>
           <!-- login begin -->
-          <?php if (Auth::isLoggedIn() && ($currentPage == "/admin/"  )):?>
+          <?php if (Auth::isLoggedIn()):?>
+          <li class="nav-item">
+            <a class="nav-link" href="/new-article.php">add article</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">contact</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout.php">
               log out
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/new-article.php">add article</a>
-          </li>
+
           <?php else: ?>
           <li class="nav-item">
-            <a class="nav-link" href="login.php">
+            <a class="nav-link" href="/login.php">
               log in
             </a>
           </li>

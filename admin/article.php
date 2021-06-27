@@ -1,7 +1,13 @@
 <?php 
- require 'includes/header.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-$conn = require 'includes/db.php';
+ require '../includes/header.php';
+
+ Auth::requireLogin();
+
+$conn = require '../includes/db.php';
 
 
 if (isset($_GET['id'])) {
@@ -32,6 +38,7 @@ if (isset($_GET['id'])) {
 
 <!-- Single post begins -->
 
+
 <section class="wrapper  wrapper--medium">
   <div class="row">
     <div class="col-md-10 offset-md-1">
@@ -41,7 +48,9 @@ if (isset($_GET['id'])) {
                         echo $datetime->format("j F, Y");
                     ?></time> | Tools</p>
         <p><?= htmlspecialchars($article->content); ?></p>
-        <button class="btn"><a href="/">Back to Previous</a></button>
+        <button class="btn"><a href="/admin/">Back to Previous</a></button>
+        <button class="btn"><a href="edit-article.php?id=<?= $article->id; ?>">Edit article</a></button>
+        <button class="btn"><a href="delete-article.php?id=<?= $article->id; ?>">Delete</a></button>
       </div>
     </div>
   </div>
@@ -53,4 +62,4 @@ if (isset($_GET['id'])) {
 <p>Article not found.</p>
 <?php endif; ?>
 
-<?php require 'includes/footer.php'; ?>
+<?php require '../includes/footer.php'; ?>

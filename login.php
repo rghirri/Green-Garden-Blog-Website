@@ -13,7 +13,7 @@ $conn = require 'includes/db.php';
 
         $_SESSION['is_logged_in'] = true;
 
-        Url::redirect('/admin/');
+        Url::redirect('/');
 
     } else {
 

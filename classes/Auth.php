@@ -26,7 +26,7 @@ class Auth
     {
         if (! static::isLoggedIn()) {
 
-            die("unauthorised");
+            die("You are unauthorised. Please login");
 
         }
     }

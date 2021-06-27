@@ -7,13 +7,8 @@
 <?php endif;  ?>
 
 <?php 
-   $currentPage = $_SERVER['REQUEST_URI'];
-    if ($currentPage == "/edit-article.php?id=$article->id" ){
-      $prePage = "article.php?id=$article->id";
-      }
-      else{
-       $prePage = "/";
-    }
+ 
+  $prePage =$_SERVER['HTTP_REFERER'];
  ?>
 
 <div class="row">

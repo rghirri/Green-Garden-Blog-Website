@@ -68,7 +68,7 @@ $articles = Article::getAll($conn);
 
             </p>
           </div>
-          <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
+          <button class="btn"><a href="article.php?id=<?= $article['id']; ?>">Edit</a></button>
         </div>
       </div>
 
@@ -103,7 +103,7 @@ $articles = Article::getAll($conn);
 
             </p>
           </div>
-          <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
+          <button class="btn"><a href="article.php?id=<?= $article['id']; ?>">Edit</a></button>
         </div>
       </div>
     </div>
