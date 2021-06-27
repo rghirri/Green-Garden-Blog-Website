@@ -1,22 +1,12 @@
 <?php
-require 'classes/Database.php';
-require 'classes/Article.php';
-require 'includes/url.php';
-
-// session_start();
-
-// if (! isLoggedIn()) {
-
-//     die("unauthorised");
-
-// }
+require 'includes/init.php';
+// Auth::requireLogin();
 
 $article = new Article();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $db = new Database();
-    $conn = $db->getConn();
+    $conn = require 'includes/db.php';
 
     $article->title = $_POST['title'];
     $article->content = $_POST['content'];
@@ -24,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($article->create($conn)) {
 
-        redirect("/article.php?id={$article->id}");
+        Url::redirect("/article.php?id={$article->id}");
 
     }
 }
@@ -46,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <!-- Hero Banner End  -->
-</header>
 <!-- Header End  -->
 <section class="wrapper  wrapper--narrow">
   <!-- Check for validation errors -->

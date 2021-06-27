@@ -1,4 +1,4 @@
-<?php require 'includes/auth.php';?>
+<?php require 'classes/Auth.php';?>
 <?php session_start();?>
 
 
@@ -18,44 +18,44 @@
 
 <body>
   <!-- Header Start  -->
-  <header>
-    <!-- Navbar Links Start  -->
-    <nav class="navbar navbar-expand-md navbar-light bg-transparent">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img id="nav-logo" src="uploads/Green-Garden-Logo-130x130.png"
-            alt="Green Garden Blog Logo" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav text-uppercase">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">contact</a>
-            </li>
-            <!-- login begin -->
-            <?php if (isLoggedIn()):?>
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">
-                log out
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/new-article.php">add article</a>
-            </li>
-            <?php else: ?>
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">
-                log in
-              </a>
-            </li>
-            <?php endif; ?>
-            <!-- login end -->
-          </ul>
-        </div>
+
+  <!-- Navbar Links Start  -->
+  <nav class="navbar navbar-expand-md navbar-light bg-transparent">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img id="nav-logo" src="uploads/Green-Garden-Logo-130x130.png"
+          alt="Green Garden Blog Logo" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav text-uppercase">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">contact</a>
+          </li>
+          <!-- login begin -->
+          <?php if (Auth::isLoggedIn()):?>
+          <li class="nav-item">
+            <a class="nav-link" href="logout.php">
+              log out
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/new-article.php">add article</a>
+          </li>
+          <?php else: ?>
+          <li class="nav-item">
+            <a class="nav-link" href="login.php">
+              log in
+            </a>
+          </li>
+          <?php endif; ?>
+          <!-- login end -->
+        </ul>
       </div>
-    </nav>
-    <!-- Navbar Links End  -->
+    </div>
+  </nav>
+  <!-- Navbar Links End  -->
