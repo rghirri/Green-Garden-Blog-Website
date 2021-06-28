@@ -1,4 +1,13 @@
  <!-- Post list Pagination begin -->
+
+ <?php 
+ $totalPagination = $paginator->total_pages; 
+//  var_dump($pageNum); 
+//  var_dump($totalPagination); 
+//  var_dump($paginator->next); 
+//  var_dump($paginator->previous); 
+ ?>
+
  <nav aria-label="page">
    <ul class="pagination pt-5">
      <!-- Check for pre pages begin -->
@@ -13,11 +22,16 @@
      </li>
      <?php endif; ?>
      <!-- Check for pre pages end -->
-     <li class="page-item"><a class="page-link" href="#">1</a></li>
-     <li class="page-item active" aria-current="page">
-       <a class="page-link" href="#">2</a>
-     </li>
-     <li class="page-item"><a class="page-link" href="#">3</a></li>
+     <!-- Loop for pagination numbers begin -->
+     <?php 
+     $x=1;
+      while($x <= $totalPagination) {?>
+
+     <li class="page-item <?php if ($pageNum == $x): echo "active"; else: ""; endif; ?>"><a class="page-link"
+         href="?page=<?= $x; ?>"><?= $x; ?></a></li>
+
+     <?php $x++; } ?>
+     <!-- Loop for pagination numbers end -->
      <?php if ($paginator->next): ?>
      <li class="page-item">
        <a class="page-link" href="?page=<?= $paginator->next; ?>">Next</a>

@@ -5,3 +5,8 @@
 .page-link:hover {
   color: $basic-text-color;
 }
+
+.page-item.active .page-link {
+  background-color: #80b435;
+  border-color: #80b435;
+}

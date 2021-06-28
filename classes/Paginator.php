@@ -20,6 +20,12 @@ class Paginator
     public $offset;
 
     /**
+     * Total pages for pagination
+     * @var integer
+     */
+    public $total_pages;
+
+    /**
      * Previous page number
      * @var integer
      */
@@ -56,11 +62,13 @@ class Paginator
 
 
         $total_pages = ceil($total_records / $records_per_page);
+        $this->total_pages= $total_pages;
 
         if ($page < $total_pages) {
             $this->next = $page + 1;
         }
 
         $this->offset = $records_per_page * ($page - 1);
+        
     }
 }

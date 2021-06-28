@@ -1,9 +1,27 @@
 <?php require dirname(__DIR__) . '/includes/init.php';
 
+
 $currentPage = $_SERVER['REQUEST_URI'];
+$currentFile = $_SERVER['PHP_SELF'];
     if ($currentPage == "/admin/" || $currentPage == "/admin/article.php" ){
       Auth::requireLogin();
       } 
+
+      if (isset($_GET['id'])) {
+        $pageId =  $_GET['id'];
+      
+      }else{
+        $pageId = null;
+      }
+
+      if (isset($_GET['page'])) {
+        $pageNum =  $_GET['page'];
+      
+      }else{
+        $pageNum = 1;
+      }
+
+    
   ?>
 
 <!DOCTYPE html>
@@ -23,6 +41,15 @@ $currentPage = $_SERVER['REQUEST_URI'];
 <body>
   <!-- Header Start  -->
 
+
+  <?php
+  // var_dump($currentPage);
+  // var_dump($currentFile);
+  // var_dump($pageNum);  
+  
+  ?>
+
+
   <!-- Navbar Links Start  -->
   <nav class="navbar navbar-expand-md navbar-light bg-transparent">
     <div class="container-fluid">
@@ -35,7 +62,8 @@ $currentPage = $_SERVER['REQUEST_URI'];
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav text-uppercase">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/">home</a>
+            <a class="nav-link <?php if ($currentPage == "/" || $currentPage == "/?page=".$pageNum || $currentPage == "/article.php?id=".$pageId): echo "active"; else: ""; endif; ?>"
+              aria-current="page" href="/">home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">contact</a>
@@ -43,10 +71,12 @@ $currentPage = $_SERVER['REQUEST_URI'];
           <!-- login begin -->
           <?php if (Auth::isLoggedIn()):?>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/new-article.php">add article</a>
+            <a class="nav-link <?php if ($currentPage == $currentFile): echo "active"; else: ""; endif; ?>"
+              href="/admin/new-article.php">add article</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin">Admin</a>
+            <a class="nav-link <?php if ($currentPage == "/admin/" || $currentPage == "/admin/?page=".$pageNum || $currentPage == $currentFile."?id=".$pageId): echo "active"; else: ""; endif; ?>"
+              href="/admin">Admin</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">contact</a>
