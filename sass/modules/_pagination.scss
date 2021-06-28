@@ -5,10 +5,3 @@
 .page-link:hover {
   color: $basic-text-color;
 }
-
-.page-link_none {
-  color: black;
-  &:hover {
-    background-color: white;
-  }
-}

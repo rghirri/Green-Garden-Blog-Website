@@ -1,4 +1,4 @@
-// active link
+// active menu link
 const currentLocation = location.href;
 const menuItem = document.querySelectorAll(".nav-link");
 const menuLength = menuItem.length;

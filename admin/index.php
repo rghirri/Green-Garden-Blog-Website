@@ -9,7 +9,11 @@ Auth::requireLogin();
 
 $conn = require '../includes/db.php';
 
-$articles = Article::getAll($conn);
+$paginator = new Paginator($_GET['page'] ?? 1, 3, Article::getTotal($conn));
+
+
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
+
 
 ?>
 
@@ -26,7 +30,7 @@ $articles = Article::getAll($conn);
 </div>
 
 <!-- Hero Banner End  -->
-</header>
+
 <!-- Header End  -->
 
 <!-- Post list begins -->
@@ -111,24 +115,9 @@ $articles = Article::getAll($conn);
   <?php endif; ?>
   <?php endforeach; ?>
   <?php endif; ?>
-  <!-- Post list Pagination  -->
-  <nav aria-label="Page">
-    <ul class="pagination pt-5">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+
+  <?php require '../includes/pagination.php'; ?>
+  <!-- Post list Pagination end -->
 </section>
 
 <!-- Post list Ends -->

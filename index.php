@@ -7,9 +7,9 @@ require 'includes/header.php';
 
 $conn = require 'includes/db.php';
 
-$pageNumber = $_GET['page'];
 
-$paginator = new Paginator($pageNumber ?? 1, 3);
+$paginator = new Paginator($_GET['page'] ?? 1, 3, Article::getTotal($conn));
+
 
 $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
@@ -114,33 +114,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
   <?php endforeach; ?>
   <?php endif; ?>
 
-  <!-- Post list Pagination begin -->
-  <nav aria-label="Page">
-    <ul class="pagination pt-5">
-      <?php if ($paginator->previous): ?>
-      <li class="page-item">
-        <a class="page-link" href="?page=<?= $paginator->previous; ?>" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <?php else: ?>
-      <li class="page-item">
-        <p class="page-link">
-          <span aria-hidden="true">&laquo;</span>
-        </p>
-      </li>
-      <?php endif; ?>
-
-      <li class="page-item"><a class="page-link" href="?page=<?= $pageNumber ?>">1</a></li>
-      <li class="page-item"><a class="page-link" href="?page=<?= $pageNumber ?>">2</a></li>
-      <li class="page-item"><a class="page-link" href="?page=<?= $pageNumber ?>">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="?page=<?= $paginator->next; ?>" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <?php require 'includes/pagination.php'; ?>
 </section>
 <!-- Post list Pagination end -->
 <!-- Post list Ends -->
