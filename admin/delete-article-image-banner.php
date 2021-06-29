@@ -25,7 +25,7 @@ die("id not supplied, article not found");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-         $previous_image = $article->image_file;
+         $previous_image = $article->image_file_banner;
 
           if ($article->setImageFile($conn, null)) {
 
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   unlink("../uploads/$previous_image");
               }
 
-              Url::redirect("/admin/edit-article-image.php?id={$article->id}");
+              Url::redirect("/admin/edit-article-image-banner.php?id={$article->id}");
 
           }
 
@@ -43,14 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Hero Banner Start  -->
 <section class="wrapper  wrapper--narrow">
   <div class="text-center">
-    <h2>delete image blog</h2>
+    <h2>delete image banner</h2>
   </div>
 </section>
 <div class="hero-banner container-fluid container-xl mb-5">
 
-  <?php if ($article->image_file): ?>
+  <?php if ($article->image_file_banner): ?>
   <!-- Display image begin -->
-  <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file; ?>" alt="" />
+  <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file_banner; ?>" alt="" />
   <!-- Display image end -->
   <?php endif; ?>
 

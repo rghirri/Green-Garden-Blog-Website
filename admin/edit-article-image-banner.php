@@ -77,32 +77,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Restrict the filename to 200 characters
       $base = mb_substr($base, 0, 200);
 
-      $filename = $base . "." . $pathinfo['extension'];
+      $filenameBanner = $base . "." . $pathinfo['extension'];
 
-      $destination = "../uploads/$filename";
+      $destination = "../uploads/$filenameBanner";
 
       // Add a numeric suffix to the filename to avoid overwriting existing files
       $i = 1;
 
       while (file_exists($destination)) {
 
-          $filename = $base . "-$i." . $pathinfo['extension'];
-          $destination = "../uploads/$filename";
+          $filenameBanner = $base . "-$i." . $pathinfo['extension'];
+          $destination = "../uploads/$filenameBanner";
 
           $i++;
       }
 
       if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
 
-          $previous_image = $article->image_file;
+          $previous_image = $article->image_file_banner;
 
-          if ($article->setImageFile($conn, $filename)) {
+          if ($article->setImageFileBanner($conn, $filenameBanner)) {
 
               if ($previous_image) {
                   unlink("../uploads/$previous_image");
               }
 
-              Url::redirect("/admin/edit-article-image.php?id={$article->id}");
+              Url::redirect("/admin/edit-article-image-banner.php?id={$article->id}");
 
           }
 
@@ -123,17 +123,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Hero Banner Start  -->
 <section class="wrapper  wrapper--narrow">
   <div class="text-center">
-    <h2>edit image blog</h2>
+    <h2>edit image banner</h2>
   </div>
 </section>
 <div class="hero-banner container-fluid container-xl mb-5">
 
-  <?php if ($article->image_file): ?>
-  <!-- Display image begin -->
-  <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file; ?>" alt="" />
-  <!-- Display image end -->
+  <?php if ($article->image_file_banner) : ?>
+  <picture class="hero-banner__overlay__darker">
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file_banner; ?>" alt="" />
+  </picture>
   <?php endif; ?>
-
 </div>
 
 
@@ -150,9 +149,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <form method="post" enctype="multipart/form-data">
 
     <div>
-      <h2>Please follow the following instruction for blog image:</h2>
+      <h2>Please follow the following instruction for banner image:</h2>
       <ul>
-        <li>The image dimensions need to be 466 x 327 px</li>
+        <li>The image dimensions need to be 1295 x 264 px</li>
         <li>The image file will need to be compressed using https://imagecompressor.com/</li>
       </ul>
 
@@ -160,8 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="file">Image file</label>
     <input type="file" name="file" id="file">
     <button class="btn">Upload</button>
-    <button class="btn"><a href="/admin/delete-article-image.php?id=<?= $article->id; ?>">Delete article
-        blog image</a></button>
+    <button class="btn"><a href="/admin/delete-article-image-banner.php?id=<?= $article->id; ?>">Delete article
+        banner image</a></button>
 
   </form>
 

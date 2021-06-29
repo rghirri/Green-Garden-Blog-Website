@@ -38,6 +38,12 @@ class Article
     public $image_file;
 
     /**
+     * Path to the image
+     * @var string
+     */
+    public $image_file_banner;
+
+    /**
      * Validation errors
      * @var array
      */
@@ -269,6 +275,28 @@ class Article
 
         $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
         $stmt->bindValue(':image_file', $filename, $filename == null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+
+        return $stmt->execute();
+    }
+
+     /**
+     * Update the image file property
+     *
+     * @param object $conn Connection to the database
+     * @param string $filenameBanner The filename of the image file
+     *
+     * @return boolean True if it was successful, false otherwise
+     */
+    public function setImageFileBanner($conn, $filenameBanner)
+    {
+        $sql = "UPDATE article
+                SET image_file_banner = :image_file_banner
+                WHERE id = :id";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':image_file_banner', $filenameBanner, $filenameBanner == null ? PDO::PARAM_NULL : PDO::PARAM_STR);
 
         return $stmt->execute();
     }
