@@ -78,13 +78,13 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
     </div>
     <div class="col-md-6 ">
-      <img class="post-list__image img-fluid" src="/uploads/herbs-min.png" alt="" class="img-fluid" />
+      <img class="post-list__image img-fluid" src="/uploads/<?= $article['image_file']; ?>" alt="" class="img-fluid" />
     </div>
   </div>
   <?php else : ?>
   <div class="row pt-5">
     <div class="col-md-6 order-2 order-md-1">
-      <img class="post-list__image img-fluid" src="/uploads/garden-tools-min.png" alt="" class="img-fluid" />
+      <img class="post-list__image img-fluid" src="/uploads/<?= $article['image_file']; ?>" alt="" class="img-fluid" />
     </div>
     <div class="col-md-6 order-1 order-md-2">
       <div class="row justify-content-center">
