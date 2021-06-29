@@ -25,8 +25,6 @@ die("id not supplied, article not found");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  var_dump($_FILES);
-
   try {
 
       if (empty($_FILES)) {
@@ -80,9 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $base = mb_substr($base, 0, 200);
 
       $filename = $base . "." . $pathinfo['extension'];
-      
-      // Read and write for owner, read for everybody else
-      chmod($filename, 0644);
 
       $destination = "../uploads/$filename";
 
@@ -99,9 +94,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
 
+          $previous_image = $article->image_file;
+
           if ($article->setImageFile($conn, $filename)) {
 
-              Url::redirect("/admin/article.php?id={$article->id}");
+              if ($previous_image) {
+                  unlink("../uploads/$previous_image");
+              }
+
+              Url::redirect("/admin/edit-article-image.php?id={$article->id}");
 
           }
 
@@ -112,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 
   } catch (Exception $e) {
-      echo $e->getMessage();
+    $error = $e->getMessage();
   }
 
 }
@@ -122,16 +123,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
   <?php if ($article->image_file): ?>
-  <picture class="hero-banner__overlay">
+  <picture class="hero-banner__overlay__darker">
     <!-- Display image begin -->
-    <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file; ?>" height="264" alt="" />
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file; ?>" alt="" />
     <!-- Display image end -->
   </picture>
   <?php else: ?>
   <picture class="hero-banner__overlay">
     <!-- Display image begin -->
-    <img class="hero-banner__overlay-image img-fluid" src="/uploads/Green-Garden-hero-banner-1295x264-min.png"
-      height="264" alt="" />
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/Green-Garden-hero-banner-1295x264-min.png" alt="" />
     <!-- Display image end -->
   </picture>
   <?php endif; ?>
@@ -147,6 +147,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Header End  -->
 <section class="wrapper  wrapper--narrow">
 
+  <?php if (isset($error)) : ?>
+  <p><?= $error ?></p>
+  <?php endif; ?>
+
   <form method="post" enctype="multipart/form-data">
 
     <div>
@@ -155,6 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <button>Upload</button>
+    <button class="btn"><a href="/admin/delete-article-image.php?id=<?= $article->id; ?>">Delete article
+        image</a></button>
 
   </form>
 

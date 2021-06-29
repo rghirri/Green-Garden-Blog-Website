@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
   <?php if ($article->image_file) : ?>
-  <picture class="hero-banner__overlay">
+  <picture class="hero-banner__overlay__darker">
     <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file; ?>" alt="" />
   </picture>
   <?php else: ?>
