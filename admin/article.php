@@ -23,10 +23,15 @@ if (isset($_GET['id'])) {
 <?php if ($article) : ?>
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
+  <?php if ($article->image_file) : ?>
   <picture class="hero-banner__overlay">
-    <img class="hero-banner__overlay-image img-fluid" src="/uploads/herbs-banner-1295x264-min.png" alt="" />
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file; ?>" alt="" />
   </picture>
-
+  <?php else: ?>
+  <picture class="hero-banner__overlay">
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/Green-Garden-hero-banner-1295x264-min.png" alt="" />
+  </picture>
+  <?php endif; ?>
   <div class="hero-banner__title">
     <h1><?= htmlspecialchars($article->title); ?></h1>
   </div>
@@ -50,6 +55,8 @@ if (isset($_GET['id'])) {
         <p><?= htmlspecialchars($article->content); ?></p>
         <button class="btn"><a href="/admin/">Back to Previous</a></button>
         <button class="btn"><a href="/admin/edit-article.php?id=<?= $article->id; ?>">Edit article</a></button>
+        <button class="btn"><a href="/admin/edit-article-image.php?id=<?= $article->id; ?>">Edit article
+            image</a></button>
         <button class="btn"><a href="/admin/delete-article.php?id=<?= $article->id; ?>">Delete</a></button>
       </div>
     </div>
