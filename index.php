@@ -8,10 +8,10 @@ require 'includes/header.php';
 $conn = require 'includes/db.php';
 
 
-$paginator = new Paginator($_GET['page'] ?? 1, 3, Article::getTotal($conn));
+$paginator = new Paginator($_GET['page'] ?? 1, 3, Article::getTotal($conn,true));
 
 
-$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true);
 
 
 

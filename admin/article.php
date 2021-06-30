@@ -48,10 +48,16 @@ if (isset($_GET['id'])) {
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <div class="single-post">
-        <p id="meta-data"><time datetime="<?= $article[0]['published_at'] ?>"><?php
+        <p id="meta-data">
+          <!-- published info -->
+          <?php if ($article[0]['published_at']): ?>
+          <time datetime="<?= $article[0]['published_at'] ?>"><?php
                         $datetime = new DateTime($article[0]['published_at']);
                         echo $datetime->format("j F, Y");
-                    ?></time> |
+                    ?></time>
+          <?php else: ?>
+          Unpublished
+          <?php endif; ?> |
           <!-- categories -->
           <?php if ($article[0]['category_name']) : ?>
           <span>Categories:
