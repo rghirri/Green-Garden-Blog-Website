@@ -159,12 +159,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="file">Image file</label>
     <input type="file" name="file" id="file">
     <button class="btn">Upload</button>
-    <button class="btn"><a class="delete" href="/admin/delete-article-image-banner.php?id=<?= $article->id; ?>">Delete
+    <a class="delete" href="/admin/delete-article-image-banner.php?id=<?= $article->id; ?>"><button class="btn">Delete
         article
-        banner image</a></button>
+        banner image</button></a>
 
   </form>
-
+  <a href="/admin/article.php?id=<?= $article->id; ?>"><button class="btn mt-5">Back to Previous</button></a>
 </section>
 
 <?php require '../includes/footer.php'; ?>

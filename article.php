@@ -65,7 +65,7 @@ if (isset($_GET['id'])) {
           <?php endif; ?>
         </p>
         <p><?= htmlspecialchars($article[0]['content']); ?></p>
-        <button class="btn"><a href="/">Back to Previous</a></button>
+        <a href="/"><button class="btn">Back to Previous</button></a>
       </div>
     </div>
   </div>

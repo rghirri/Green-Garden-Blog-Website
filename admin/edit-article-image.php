@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 Auth::requireLogin();
 
 
+
 $conn = require '../includes/db.php';
 
 if (isset($_GET['id'])) {
@@ -160,10 +161,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="file">Image file</label>
     <input type="file" name="file" id="file">
     <button class="btn">Upload</button>
-    <button class="btn"><a class="delete" href="/admin/delete-article-image.php?id=<?= $article->id; ?>">Delete article
-        blog image</a></button>
+    <a class="delete" href="/admin/delete-article-image.php?id=<?= $article->id; ?>"><button class="btn">Delete article
+        blog image</button></a>
+
 
   </form>
+
+  <a href="/admin/article.php?id=<?= $article->id; ?>"><button class="btn mt-5">Back to Previous</button></a>
 
 </section>
 

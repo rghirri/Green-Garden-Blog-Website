@@ -69,14 +69,14 @@ if (isset($_GET['id'])) {
           <?php endif; ?>
         </p>
         <p><?= htmlspecialchars($article[0]['content']); ?></p>
-        <button class="btn"><a href="/admin/">Back to Previous</a></button>
-        <button class="btn"><a href="/admin/edit-article.php?id=<?= $article[0]['id']; ?>">Edit article</a></button>
-        <button class="btn"><a href="/admin/edit-article-image.php?id=<?= $article[0]['id']; ?>">Edit article
-            image blog</a></button>
-        <button class="btn"><a href="/admin/edit-article-image-banner.php?id=<?= $article[0]['id']; ?>">Edit article
-            image banner</a></button>
-        <button class="btn"><a class="delete" href="/admin/delete-article.php?id=<?= $article[0]['id']; ?>">Delete
-            article</a></button>
+        <a href="/admin/"><button class="btn">Back to Previous</button></a>
+        <a href="/admin/edit-article.php?id=<?= $article[0]['id']; ?>"><button class="btn">Edit article</button></a>
+        <a href="/admin/edit-article-image.php?id=<?= $article[0]['id']; ?>"><button class="btn">Edit article
+            image blog</button></a>
+        <a href="/admin/edit-article-image-banner.php?id=<?= $article[0]['id']; ?>"><button class="btn">Edit article
+            image banner</button></a>
+        <a class="delete" href="/admin/delete-article.php?id=<?= $article[0]['id']; ?>"><button class="btn">Delete
+            article</button></a>
       </div>
     </div>
   </div>

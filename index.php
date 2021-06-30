@@ -81,7 +81,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
 
             </p>
           </div>
-          <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
+          <a href="/article.php?id=<?= $article['id']; ?>"><button class="btn">Read More</button></a>
         </div>
       </div>
 
@@ -125,7 +125,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
 
             </p>
           </div>
-          <button class="btn"><a href="/article.php?id=<?= $article['id']; ?>">Read More</a></button>
+          <a href="/article.php?id=<?= $article['id']; ?>"><button class="btn">Read More</button></a>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@
 <?php 
  
   $prePage =$_SERVER['HTTP_REFERER'];
+  // var_dump($prePage);
  ?>
 
 <div class="row">
@@ -43,9 +44,9 @@
         <?php endforeach; ?>
       </fieldset>
 
-      <button class="btn mt-3"><a href="<?= $prePage ?>">Back to Previous</a></button>
       <button class="btn mt-3 mx-2 add_article_btn">save</button>
 
     </form>
+    <a href="<?= $prePage ?>"><button class="btn mt-3">Back to Previous</button></a>
   </div>
 </div>
