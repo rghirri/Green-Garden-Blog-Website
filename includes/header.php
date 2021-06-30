@@ -51,7 +51,7 @@ $currentFile = $_SERVER['PHP_SELF'];
 
 
   <!-- Navbar Links Start  -->
-  <nav class="navbar navbar-expand-md navbar-light bg-transparent">
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><img id="nav-logo" src="../uploads/Green-Garden-Logo-130x130.png"
           alt="Green Garden Blog Logo" /></a>
@@ -61,15 +61,12 @@ $currentFile = $_SERVER['PHP_SELF'];
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav text-uppercase">
+          <!-- login begin -->
+          <?php if (Auth::isLoggedIn()):?>
           <li class="nav-item">
             <a class="nav-link <?php if ($currentPage == "/" || $currentPage == "/?page=".$pageNum || $currentPage == "/article.php?id=".$pageId): echo "active"; else: ""; endif; ?>"
               aria-current="page" href="/">home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">contact</a>
-          </li>
-          <!-- login begin -->
-          <?php if (Auth::isLoggedIn()):?>
           <li class="nav-item">
             <a class="nav-link <?php if ($currentPage == $currentFile): echo "active"; else: ""; endif; ?>"
               href="/admin/new-article.php">add article</a>
@@ -88,6 +85,13 @@ $currentFile = $_SERVER['PHP_SELF'];
           </li>
 
           <?php else: ?>
+          <li class="nav-item">
+            <a class="nav-link <?php if ($currentPage == "/" || $currentPage == "/?page=".$pageNum || $currentPage == "/article.php?id=".$pageId): echo "active"; else: ""; endif; ?>"
+              aria-current="page" href="/">home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">contact</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/login.php">
               log in
