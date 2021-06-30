@@ -154,14 +154,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <ul>
         <li>The image dimensions need to be 466 x 327 px</li>
         <li>The image file will need to be compressed using https://imagecompressor.com/</li>
-        <li>The image file name should be unique</li>
       </ul>
 
     </div>
     <label for="file">Image file</label>
     <input type="file" name="file" id="file">
     <button class="btn">Upload</button>
-    <button class="btn"><a href="/admin/delete-article-image.php?id=<?= $article->id; ?>">Delete article
+    <button class="btn"><a class="delete" href="/admin/delete-article-image.php?id=<?= $article->id; ?>">Delete article
         blog image</a></button>
 
   </form>

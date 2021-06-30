@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
          $previous_image = $article->image_file_banner;
 
-          if ($article->setImageFile($conn, null)) {
+          if ($article->setImageFileBanner($conn, null)) {
 
               if ($previous_image) {
                   unlink("../uploads/$previous_image");
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p>Are you sure?</p>
 
     <button>Delete</button>
-    <a href="edit-article-image.php?id=<?= $article->id; ?>">Cancel</a>
+    <a href="edit-article-image-banner.php?id=<?= $article->id; ?>">Cancel</a>
 
   </form>
 </section>

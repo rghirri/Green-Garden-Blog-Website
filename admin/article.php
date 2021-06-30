@@ -69,7 +69,8 @@ if (isset($_GET['id'])) {
             image blog</a></button>
         <button class="btn"><a href="/admin/edit-article-image-banner.php?id=<?= $article[0]['id']; ?>">Edit article
             image banner</a></button>
-        <button class="btn"><a href="/admin/delete-article.php?id=<?= $article[0]['id']; ?>">Delete article</a></button>
+        <button class="btn"><a class="delete" href="/admin/delete-article.php?id=<?= $article[0]['id']; ?>">Delete
+            article</a></button>
       </div>
     </div>
   </div>
