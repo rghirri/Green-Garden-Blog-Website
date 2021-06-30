@@ -13,7 +13,7 @@
 
 <div class="row">
   <div class="offset-md-1 col-md-10 offset-md-1">
-    <form method="post">
+    <form method="post" id="formArticle">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" class="form-control" name="title" id="title" placeholder="Article title" autocomplete="off"
