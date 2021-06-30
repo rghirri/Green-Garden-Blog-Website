@@ -153,6 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <ul>
         <li>The image dimensions need to be 1295 x 264 px</li>
         <li>The image file will need to be compressed using https://imagecompressor.com/</li>
+        <li>The image file name should be unique</li>
       </ul>
 
     </div>

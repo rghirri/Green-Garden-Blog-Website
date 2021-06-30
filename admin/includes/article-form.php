@@ -12,7 +12,7 @@
  ?>
 
 <div class="row">
-  <div class="col-md-10 offset-md-1">
+  <div class="offset-md-1 col-md-10 offset-md-1">
     <form method="post">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
@@ -30,6 +30,19 @@
         <input type="text" class="form-control" name="published_at" id="published_at" placeholder="Published Date"
           autocomplete="off" value="<?= htmlspecialchars($article->published_at) ?>">
       </div>
+
+      <fieldset>
+        <legend>Categories</legend>
+
+        <?php foreach ($categories as $category) : ?>
+        <div>
+          <input type="checkbox" name="category[]" value="<?= $category['id'] ?>" id="category<?= $category['id'] ?>"
+            <?php if (in_array($category['id'], $category_ids)) :?>checked<?php endif; ?>>
+          <label for="category<?= $category['id'] ?>"><?= htmlspecialchars($category['name']) ?></label>
+        </div>
+        <?php endforeach; ?>
+      </fieldset>
+
       <button class="btn mt-3"><a href="<?= $prePage ?>">Back to Previous</a></button>
       <button class="btn mt-3 mx-2 add_article_btn">save</button>
 

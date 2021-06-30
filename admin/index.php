@@ -15,6 +15,7 @@ $paginator = new Paginator($_GET['page'] ?? 1, 3, Article::getTotal($conn));
 $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 
+
 ?>
 
 
@@ -59,7 +60,16 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
             <p id="meta-data"><time datetime="<?= $article['published_at'] ?>"><?php
                         $datetime = new DateTime($article['published_at']);
                         echo $datetime->format("j F, Y");
-                    ?></time> | cooking</p>
+                    ?></time> |
+              <!-- categories -->
+              <?php if ($article['category_names']) : ?>
+              <span>Categories:
+                <?php foreach ($article['category_names'] as $name) : ?>
+                <?= htmlspecialchars($name); ?>
+                <?php endforeach; ?>
+              </span>
+              <?php endif; ?>
+            </p>
             <p> <?php
                       $string = $article["content"];
                       $max = 150; // or 200, or whatever
@@ -94,7 +104,16 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
             <p id="meta-data"><time datetime="<?= $article['published_at'] ?>"><?php
                         $datetime = new DateTime($article['published_at']);
                         echo $datetime->format("j F, Y");
-                    ?></time> | Tools</p>
+                    ?></time> |
+              <!-- categories -->
+              <?php if ($article['category_names']) : ?>
+              <span>Categories:
+                <?php foreach ($article['category_names'] as $name) : ?>
+                <?= htmlspecialchars($name); ?>
+                <?php endforeach; ?>
+              </span>
+              <?php endif; ?>
+            </p>
             <p> <?php
                       $string = $article["content"];
                       $max = 150; // or 200, or whatever

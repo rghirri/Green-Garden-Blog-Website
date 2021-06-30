@@ -1,15 +1,21 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
  require 'includes/header.php';
 
 $conn = require 'includes/db.php';
 
 
 if (isset($_GET['id'])) {
-  $article = Article::getByID($conn, $_GET['id']);
+  $article = Article::getWithCategories($conn, $_GET['id']);
 
 }else{
   $article = null;
 }
+
+// var_dump($article);
 
 ?>
 
@@ -17,9 +23,9 @@ if (isset($_GET['id'])) {
 <?php if ($article) : ?>
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
-  <?php if ($article->image_file_banner) : ?>
+  <?php if ($article[0]['image_file_banner']) : ?>
   <picture class="hero-banner__overlay__darker">
-    <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file_banner; ?>" alt="" />
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article[0]['image_file_banner']; ?>" alt="" />
   </picture>
   <?php else: ?>
   <picture class="hero-banner__overlay">
@@ -28,7 +34,7 @@ if (isset($_GET['id'])) {
   <?php endif; ?>
 
   <div class="hero-banner__title">
-    <h1><?= htmlspecialchars($article->title); ?></h1>
+    <h1><?= htmlspecialchars($article[0]['title']); ?></h1>
   </div>
 </div>
 
@@ -42,11 +48,23 @@ if (isset($_GET['id'])) {
   <div class="row">
     <div class="col-md-10 offset-md-1">
       <div class="single-post">
-        <p id="meta-data"><time datetime="<?= $article->published_at ?>"><?php
-                        $datetime = new DateTime($article->published_at);
+        <p id="meta-data">
+          <!-- pubish time and date -->
+          <time datetime="<?= $article[0]['published_at'] ?>"><?php
+                        $datetime = new DateTime($article[0]['published_at']);
                         echo $datetime->format("j F, Y");
-                    ?></time> | Tools</p>
-        <p><?= htmlspecialchars($article->content); ?></p>
+                    ?></time> |
+          <!-- categories -->
+          <?php if ($article[0]['category_name']) : ?>
+          <span>Categories:
+            <?php foreach ($article as $a) : ?>
+            <?= htmlspecialchars($a['category_name']); ?>
+            <?php echo ',' ?>
+            <?php endforeach; ?>
+          </span>
+          <?php endif; ?>
+        </p>
+        <p><?= htmlspecialchars($article[0]['content']); ?></p>
         <button class="btn"><a href="/">Back to Previous</a></button>
       </div>
     </div>
