@@ -70,9 +70,23 @@ if (isset($_GET['id'])) {
         </p>
         <p><?= htmlspecialchars($article[0]['content']); ?></p>
         <a href="/admin/"><button class="btn">Back to Previous</button></a>
-
-        <button class="btn" id="publish" data-id="<?= $article[0]['id'] ?>">publish</button>
-
+        <!-- disable publish button -->
+        <?php if ($article[0]['published_at']): ?>
+        <a href="/admin/article.php?id=<?= $article[0]['id']; ?>"><button disabled class="btn" id="publish"
+            data-id="<?= $article[0]['id'] ?>">publish</button></a>
+        <?php else: ?>
+        <a href="/admin/article.php?id=<?= $article[0]['id']; ?>"><button class="btn" id="publish"
+            data-id="<?= $article[0]['id'] ?>">publish</button></a>
+        <?php endif; ?>
+        <!-- -------------------- -->
+        <?php if ($article[0]['published_at']): ?>
+        <a href="/admin/article.php?id=<?= $article[0]['id']; ?>"><button class="btn" id="unpublish"
+            data-id="<?= $article[0]['id'] ?>">Unpublish</button></a>
+        <?php else: ?>
+        <a href="/admin/article.php?id=<?= $article[0]['id']; ?>"><button disabled class="btn" id="unpublish"
+            data-id="<?= $article[0]['id'] ?>">unpublish</button></a>
+        <?php endif; ?>
+        <!-- -------------------- -->
         <a href="/admin/edit-article.php?id=<?= $article[0]['id']; ?>"><button class="btn">Edit article</button></a>
         <a href="/admin/edit-article-image.php?id=<?= $article[0]['id']; ?>"><button class="btn">Edit article
             image blog</button></a>

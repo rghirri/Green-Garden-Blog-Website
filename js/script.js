@@ -68,4 +68,19 @@ jQuery(document).ready(function ($) {
       $("#published-date").html(data);
     });
   });
+
+  // unpublish button
+  $("#unpublish").on("click", function (e) {
+    var id = $(this).data("id");
+    // alert(id);
+    // var button = $(this);
+
+    $.ajax({
+      url: "/admin/unpublish-article.php",
+      type: "POST",
+      data: { id: id }
+    }).done(function (data) {
+      $("#published-date").html(data);
+    });
+  });
 });

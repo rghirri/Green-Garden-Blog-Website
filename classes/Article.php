@@ -466,8 +466,36 @@ class Article
 
         if ($stmt->execute()) {
             // add date format to be displayed
-            $datetime = new DateTime($published_at);
-            $published_at =  $datetime->format("j F, Y");
+            // $datetime = new DateTime($published_at);
+            // $published_at =  $datetime->format("j F, Y");
+            return $published_at;
+        }
+    }
+
+     /**
+     * Unpublish the article, setting the published_at field to null
+     *
+     * @param object $conn Connection to the database
+     *
+     * @return mixed The published at date and time is changed to null
+     */
+    public function unpublish($conn)
+    {
+        $sql = "UPDATE article
+                SET published_at = :published_at
+                WHERE id = :id";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        $published_at = NULL;
+        $stmt->bindValue(':published_at', $published_at, PDO::PARAM_NULL);
+
+        if ($stmt->execute()) {
+            // add date format to be displayed
+            // $datetime = new DateTime($published_at);
+            // $published_at =  $datetime->format("j F, Y");
             return $published_at;
         }
     }
