@@ -42,23 +42,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
 
-            $mail->isSMTP();
-            $mail->Host = 'your mail server';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'username';
-            $mail->Password = 'password';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 587;
+          $mail->isSMTP();
+          $mail->Host = 'mail.rayaa.wdan.uk';
+          $mail->SMTPAuth = true;
+          $mail->Username = 'rghirri@rayaa.wdan.uk';
+          $mail->Password = 'Bread1!Harrisa';
+          $mail->SMTPSecure = 'tls';
+          $mail->Port = 25;
 
-            $mail->setFrom('sender@example.com');
-            $mail->addAddress('recipient@example.com');
-            $mail->addReplyTo($email);
-            $mail->Subject = $subject;
-            $mail->Body = $message;
+          $mail->setFrom($email);
+          $mail->addAddress('rajaa.ghirri@yahoo.com');
+          $mail->addReplyTo($email);
+          $mail->Subject = $subject;
+          $mail->Body = $message;
 
-            $mail->send();
+          $mail->send();
 
-            $sent = true;
+          $sent = true;
 
         } catch (Exception $e) {
 
