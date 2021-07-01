@@ -27,9 +27,9 @@
 <!-- Footer End -->
 </body>
 <script src="/vendor/jquery-3.6.0.min.js"></script>
-<script src="/vendor/bootstrap-5.0.1/js/bootstrap.min.js"></script>
 <script src="/vendor/jquery.datetimepicker.full.min.js"></script>
 <script src="/vendor/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
+<script src="/vendor/bootstrap-5.0.1/js/bootstrap.min.js"></script>
 <script src="/js/script.js"></script>
 
 </html>

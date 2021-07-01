@@ -107,10 +107,16 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
         <div class="col-10 col-lg-9">
           <div class="post-list d-flex flex-column">
             <h2 class="post-list__title"><?= $article['title'] ?></h2>
-            <p id="meta-data"><time datetime="<?= $article['published_at'] ?>"><?php
+            <p id="meta-data">
+              <!-- published info -->
+              <?php if ($article['published_at']): ?>
+              <time datetime="<?= $article['published_at'] ?>"><?php
                         $datetime = new DateTime($article['published_at']);
                         echo $datetime->format("j F, Y");
-                    ?></time> |
+                    ?></time>
+              <?php else: ?>
+              Unpublished
+              <?php endif; ?> |
               <!-- categories -->
               <?php if ($article['category_names']) : ?>
               <span>Categories:

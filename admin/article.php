@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
         <p id="meta-data">
           <!-- published info -->
           <?php if ($article[0]['published_at']): ?>
-          <time datetime="<?= $article[0]['published_at'] ?>"><?php
+          <time id="published-date" datetime="<?= $article[0]['published_at'] ?>"><?php
                         $datetime = new DateTime($article[0]['published_at']);
                         echo $datetime->format("j F, Y");
                     ?></time>
@@ -70,6 +70,9 @@ if (isset($_GET['id'])) {
         </p>
         <p><?= htmlspecialchars($article[0]['content']); ?></p>
         <a href="/admin/"><button class="btn">Back to Previous</button></a>
+
+        <button class="btn" id="publish" data-id="<?= $article[0]['id'] ?>">publish</button>
+
         <a href="/admin/edit-article.php?id=<?= $article[0]['id']; ?>"><button class="btn">Edit article</button></a>
         <a href="/admin/edit-article-image.php?id=<?= $article[0]['id']; ?>"><button class="btn">Edit article
             image blog</button></a>
