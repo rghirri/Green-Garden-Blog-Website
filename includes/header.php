@@ -76,7 +76,8 @@ $currentFile = $_SERVER['PHP_SELF'];
               href="/admin">Admin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">contact</a>
+            <a class="nav-link <?php if ($currentPage == "/contact"): echo "active"; else: ""; endif; ?>"
+              href="/contact.php">contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout.php"><button class="btn text-uppercase">log out</button></a>
@@ -88,7 +89,8 @@ $currentFile = $_SERVER['PHP_SELF'];
               aria-current="page" href="/">home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">contact</a>
+            <a class="nav-link <?php if ($currentPage == "/contact"): echo "active"; else: ""; endif; ?>"
+              href="/contact.php">contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login.php"><button class="btn text-uppercase">log in</button></a>
