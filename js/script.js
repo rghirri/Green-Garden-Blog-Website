@@ -83,4 +83,21 @@ jQuery(document).ready(function ($) {
       $("#published-date").html(data);
     });
   });
+
+  // validate contact form
+
+  $("#formContact").validate({
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      subject: {
+        required: true
+      },
+      message: {
+        required: true
+      }
+    }
+  });
 });

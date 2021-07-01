@@ -68,16 +68,12 @@ $currentFile = $_SERVER['PHP_SELF'];
               aria-current="page" href="/">home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == $currentFile): echo "active"; else: ""; endif; ?>"
+            <a class="nav-link <?php if ($currentPage == "/admin/new-article.php"): echo "active"; else: ""; endif; ?>"
               href="/admin/new-article.php">add article</a>
           </li>
           <li class="nav-item">
             <a class="nav-link <?php if ($currentPage == "/admin/" || $currentPage == "/admin/?page=".$pageNum || $currentPage == $currentFile."?id=".$pageId): echo "active"; else: ""; endif; ?>"
               href="/admin">Admin</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == "/contact"): echo "active"; else: ""; endif; ?>"
-              href="/contact.php">contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout.php"><button class="btn text-uppercase">log out</button></a>
@@ -89,7 +85,7 @@ $currentFile = $_SERVER['PHP_SELF'];
               aria-current="page" href="/">home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php if ($currentPage == "/contact"): echo "active"; else: ""; endif; ?>"
+            <a class="nav-link <?php if ($currentPage == "/contact.php"): echo "active"; else: ""; endif; ?>"
               href="/contact.php">contact</a>
           </li>
           <li class="nav-item">
