@@ -43,10 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
 
           $mail->isSMTP();
-          $mail->Host = 'mail.rayaa.wdan.uk';
+          $mail->Host = SMTP_HOST;
           $mail->SMTPAuth = true;
-          $mail->Username = 'rghirri@rayaa.wdan.uk';
-          $mail->Password = 'Bread1!Harrisa';
+          $mail->Username = SMTP_USER;
+          $mail->Password = SMTP_PASS;
           $mail->SMTPSecure = 'tls';
           $mail->Port = 25;
 
