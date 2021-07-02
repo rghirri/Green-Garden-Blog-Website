@@ -44,6 +44,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
     <?php 
   $i=0;
   foreach ($articles as $article) : 
+
   $i++;
   if(!($i % 2 == 0 )) : 
   
@@ -132,8 +133,8 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
     </div>
     <?php endif; ?>
     <?php endforeach; ?>
-    <?php endif; ?>
 
+    <?php endif; ?>
     <?php require 'includes/pagination.php'; ?>
   </section>
   <!-- Post list Pagination end -->
