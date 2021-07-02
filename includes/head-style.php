@@ -10,6 +10,15 @@
   <link rel="stylesheet" href="/vendor/css/jquery.datetimepicker.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
   <title>Green Garden Blog</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/uploads/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/uploads/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/uploads/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="/uploads/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
