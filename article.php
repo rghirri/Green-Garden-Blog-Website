@@ -53,10 +53,10 @@ if (isset($_GET['id'])) {
           <time datetime="<?= $article[0]['published_at'] ?>"><?php
                         $datetime = new DateTime($article[0]['published_at']);
                         echo $datetime->format("j F, Y");
-                    ?></time> |
+                    ?></time>
           <!-- categories -->
           <?php if ($article[0]['category_name']) : ?>
-          <span>Categories:
+          <span> | Categories:
             <?php foreach ($article as $a) : ?>
             <?= htmlspecialchars($a['category_name']); ?>
             <?php echo ',' ?>

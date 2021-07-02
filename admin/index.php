@@ -66,10 +66,10 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
                     ?></time>
               <?php else: ?>
               Unpublished
-              <?php endif; ?> |
+              <?php endif; ?>
               <!-- categories -->
               <?php if ($article['category_names']) : ?>
-              <span>Categories:
+              <span> | Categories:
                 <?php foreach ($article['category_names'] as $name) : ?>
                 <?= htmlspecialchars($name); ?>
                 <?php endforeach; ?>

@@ -12,6 +12,7 @@ require 'vendor/PHP/PHPMailer/src/SMTP.php';
 
 require 'includes/header.php';
 
+$name = '';
 $email = '';
 $subject = '';
 $message = '';
@@ -19,11 +20,16 @@ $sent = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $email = $_POST['email'];
+  $name    = $_POST['name'];
+  $email   = $_POST['email'];
   $subject = $_POST['subject'];
   $message = $_POST['message'];
 
   $errors = [];
+
+    if ($name == '') {
+        $errors[] = 'Please enter a name';
+    }
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         $errors[] = 'Please enter a valid email address';
@@ -51,8 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $mail->Port = 25;
 
           $mail->setFrom($email);
-          $mail->addAddress('rajaa.ghirri@yahoo.com');
+          $mail->addAddress('rayaa_ghirri@yahoo.com');
           $mail->addReplyTo($email);
+          $mail->Name = $name;
           $mail->Subject = $subject;
           $mail->Body = $message;
 
@@ -70,10 +77,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
+
+<!-- Confirmation message -->
+<?php if ($sent) : ?>
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
-  <picture class="hero-banner__overlay">
-    <img class="hero-banner__overlay-image img-fluid" src="/uploads/Green-Garden-hero-banner-1295x264-min.png" alt="" />
+  <picture class="hero-banner__overlay__lighter">
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/contact-us-banner-1295x264-min.png" alt="" />
+  </picture>
+
+  <div class="hero-banner__title">
+    <h1>Thank You</h1>
+  </div>
+</div>
+<!-- Hero Banner End  -->
+<section class="wrapper  wrapper--narrow">
+  <p>Your Message has been sent and someone will be contacting you soon!</p>
+</section>
+<?php else: ?>
+<!-- Hero Banner Start  -->
+<div class="hero-banner container-fluid container-xl">
+  <picture class="hero-banner__overlay__lighter">
+    <img class="hero-banner__overlay-image img-fluid" src="/uploads/contact-us-banner-1295x264-min.png" alt="" />
   </picture>
 
   <div class="hero-banner__title">
@@ -81,20 +106,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 </div>
 <!-- Hero Banner End  -->
-
-
-
 <!-- Contact Form Start -->
 <section class="wrapper  wrapper--narrow">
-
   <div class="mb-5">
     <h2>Contact form</h2>
-    <p>We would love to here from you! Please fill in the following form with you query</p>
+    <p>I would love to here from you! Please fill in the following form with you query</p>
   </div>
-  <!-- Confirmation message -->
-  <?php if ($sent) : ?>
-  <p>Message sent.</p>
-  <?php else: ?>
   <!-- Validation -->
   <?php if (! empty($errors)) : ?>
   <ul>
@@ -104,6 +121,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </ul>
   <?php endif; ?>
   <form method="post" id="formContact">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input name="name" type="text" class="form-control" id="name" placeholder="name"
+        value="<?= htmlspecialchars($name) ?>">
+    </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input name="email" type="email" class="form-control" id="emai" placeholder="name@example.com"
@@ -121,8 +143,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <button class="btn mt-3 mx-2 add_article_btn">Send</button>
   </form>
-  <?php endif; ?>
+  <!-- Contact Form End -->
 </section>
-<!-- Contact Form End -->
+<?php endif; ?>
 
 <?php require 'includes/footer.php'; ?>

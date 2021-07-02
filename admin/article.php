@@ -57,10 +57,10 @@ if (isset($_GET['id'])) {
                     ?></time>
           <?php else: ?>
           Unpublished
-          <?php endif; ?> |
+          <?php endif; ?>
           <!-- categories -->
           <?php if ($article[0]['category_name']) : ?>
-          <span>Categories:
+          <span> | Categories:
             <?php foreach ($article as $a) : ?>
             <?= htmlspecialchars($a['category_name']); ?>
             <?php echo ',' ?>

@@ -59,6 +59,9 @@ jQuery(document).ready(function ($) {
 
   $("#formContact").validate({
     rules: {
+      name: {
+        required: true
+      },
       email: {
         required: true,
         email: true
@@ -67,6 +70,19 @@ jQuery(document).ready(function ($) {
         required: true
       },
       message: {
+        required: true
+      }
+    }
+  });
+
+  // validate login form
+
+  $("#loginForm").validate({
+    rules: {
+      username: {
+        required: true
+      },
+      password: {
         required: true
       }
     }

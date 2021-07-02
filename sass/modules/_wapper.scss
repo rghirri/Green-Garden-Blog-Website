@@ -22,6 +22,13 @@
 
   &--narrow {
     max-width: 1000px;
+
+    &__height {
+      padding-top: 14vh;
+      @include atSmall {
+        padding-top: 20vh;
+      }
+    }
   }
 
   //   &--no-padding-until-medium {
