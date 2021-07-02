@@ -81,9 +81,13 @@ jQuery(document).ready(function ($) {
       url: "/admin/publish-article.php",
       type: "POST",
       data: { id: id }
-    }).done(function (data) {
-      $("#published-date").html(data);
-    });
+    })
+      .done(function (data) {
+        $("#published-date").html(data);
+      })
+      .fail(function (data) {
+        alert("An error occurred");
+      });
   });
 
   // unpublish button
@@ -96,8 +100,12 @@ jQuery(document).ready(function ($) {
       url: "/admin/unpublish-article.php",
       type: "POST",
       data: { id: id }
-    }).done(function (data) {
-      $("#published-date").html(data);
-    });
+    })
+      .done(function (data) {
+        $("#published-date").html(data);
+      })
+      .fail(function (data) {
+        alert("An error occurred");
+      });
   });
 });
