@@ -55,6 +55,23 @@ jQuery(document).ready(function ($) {
     }
   });
 
+  // validate contact form
+
+  $("#formContact").validate({
+    rules: {
+      email: {
+        required: true,
+        email: true
+      },
+      subject: {
+        required: true
+      },
+      message: {
+        required: true
+      }
+    }
+  });
+
   // publish button
   $("#publish").on("click", function (e) {
     var id = $(this).data("id");
@@ -82,22 +99,5 @@ jQuery(document).ready(function ($) {
     }).done(function (data) {
       $("#published-date").html(data);
     });
-  });
-
-  // validate contact form
-
-  $("#formContact").validate({
-    rules: {
-      email: {
-        required: true,
-        email: true
-      },
-      subject: {
-        required: true
-      },
-      message: {
-        required: true
-      }
-    }
   });
 });

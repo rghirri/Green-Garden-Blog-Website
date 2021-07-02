@@ -9,3 +9,7 @@ define('DB_PASS', 'rjQ2BtgiCz246XDe');
 define('SMTP_HOST', 'mail.rayaa.wdan.uk');
 define('SMTP_USER', 'rghirri@rayaa.wdan.uk');
 define('SMTP_PASS', 'Bread1!Harrisa');
+
+// Error Handling
+
+define('SHOW_ERROR_DETAIL', true); 
