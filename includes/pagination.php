@@ -1,14 +1,8 @@
+ <!-- This file is added to the end of the post list  -->
  <!-- Post list Pagination begin -->
 
  <?php 
- $totalPagination = $paginator->total_pages; 
-//  var_dump($pageNum); 
-  //  var_dump($totalPagination); 
-  // var_dump($paginator->next); 
- // var_dump($paginator->previous); 
- // var_dump($paginator->limit); 
-//  var_dump($paginator->offset); 
- ?>
+ $totalPagination = $paginator->total_pages; ?>
 
  <nav aria-label="page" id="pagination-list">
 
@@ -25,6 +19,7 @@
      </li>
      <?php endif; ?>
      <!-- Check for pre pages end -->
+
      <!-- Loop for pagination numbers begin -->
      <?php 
      $x=$pageNum;
@@ -33,7 +28,6 @@
       while($j <= $paginator->next) {?>
      <li class="page-item <?php if ($pageNum == $j): echo "active"; else: ""; endif; ?>"><a class="page-link"
          href="?page=<?= $j; ?>"><?= $j; ?></a></li>
-
      <?php $j++; } 
       
       elseif($x > 3):
@@ -43,17 +37,17 @@
          href="?page=<?= $j; ?>"><?= $j; ?></a></li>
      <?php $j++; }
 
-             elseif ($x <= $totalPagination  ):
-              $j=$totalPagination-1;
-              while($j <= $totalPagination) {?>
+      elseif ($x <= $totalPagination  ):
+      $j=$totalPagination-1;
+      while($j <= $totalPagination) {?>
      <li class="page-item <?php if ($pageNum == $x): echo "active"; else: ""; endif; ?>"><a class="page-link"
          href="?page=<?= $j; ?>"><?= $j; ?></a></li>
      <?php $j++; } 
      endif;
      ?>
-
-
      <!-- Loop for pagination numbers end -->
+
+     <!-- Check for next pages begin -->
      <?php if ($paginator->next): ?>
      <li class="page-item">
        <a class="page-link" href="?page=<?= $paginator->next; ?>">Next</a>
@@ -63,5 +57,6 @@
        <a class="page-link" href="?page=<?= $paginator->next; ?>">Next</a>
      </li>
      <?php endif; ?>
+     <!-- Check for next pages begin -->
    </ul>
  </nav>

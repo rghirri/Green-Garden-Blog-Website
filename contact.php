@@ -1,8 +1,17 @@
 <?php 
+//-----------------------------------------------------
+// PHP debug code which I used to test page for errors
+// This code must be remove when the site is ready for 
+// live production.
+//-----------------------------------------------------
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+//-----------------------------------------------------
+// This code is used to get the included PHPmailer
+// used to send emails, which is used in contact page.
+//-----------------------------------------------------
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -10,14 +19,18 @@ require 'vendor/PHP/PHPMailer/src/Exception.php';
 require 'vendor/PHP/PHPMailer/src/PHPMailer.php';
 require 'vendor/PHP/PHPMailer/src/SMTP.php';
 
+/* Include header as part of the code */
 require 'includes/header.php';
 
+/* Data from form input */
 $name = '';
 $email = '';
 $subject = '';
 $message = '';
 $sent = false;
 
+/* This code checks for POST requests and 
+   validates the input from form and sends email*/
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $name    = $_POST['name'];

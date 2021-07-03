@@ -1,6 +1,11 @@
-<?php require dirname(__DIR__) . '/includes/init.php';
+<?php 
+/* This code includes init.php file 
+   which has the class autoloader*/
+require dirname(__DIR__) . '/includes/init.php';
 
-
+/* This code used to determine which links can be displayed 
+  depending on whether admin user is logged in
+  or not. Also, for adding active classe to current */
 $currentPage = $_SERVER['REQUEST_URI'];
 $currentFile = $_SERVER['PHP_SELF'];
     if ($currentPage == "/admin/" || $currentPage == "/admin/article.php" ){
@@ -20,12 +25,12 @@ $currentFile = $_SERVER['PHP_SELF'];
       }else{
         $pageNum = 1;
       }
-
-    
+  
   ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- css, styling and favicon files -->
 
 <head>
   <meta charset="UTF-8" />
@@ -48,16 +53,6 @@ $currentFile = $_SERVER['PHP_SELF'];
 </head>
 
 <body>
-  <!-- Header Start  -->
-
-
-  <?php
-  // var_dump($currentPage);
-  // var_dump($currentFile);
-  // var_dump($pageNum);  
-  
-  ?>
-
 
   <!-- Navbar Links Start  -->
   <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -70,7 +65,10 @@ $currentFile = $_SERVER['PHP_SELF'];
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav text-uppercase">
-          <!-- login begin -->
+          <!--    This part of the navbar can be only access by admin user. 
+              This code is used to check if admin user is 
+              logged in or not. This is done by calling 
+              the requireLogin() method in Auth class -->
           <?php if (Auth::isLoggedIn()):?>
           <li class="nav-item">
             <a class="nav-link <?php if ($currentPage == "/" || $currentPage == "/?page=".$pageNum || $currentPage == "/article.php?id=".$pageId): echo "active"; else: ""; endif; ?>"
@@ -87,7 +85,6 @@ $currentFile = $_SERVER['PHP_SELF'];
           <li class="nav-item">
             <a class="nav-link" href="/logout.php"><button class="btn text-uppercase">log out</button></a>
           </li>
-
           <?php else: ?>
           <li class="nav-item">
             <a class="nav-link <?php if ($currentPage == "/" || $currentPage == "/?page=".$pageNum || $currentPage == "/article.php?id=".$pageId): echo "active"; else: ""; endif; ?>"
@@ -107,5 +104,3 @@ $currentFile = $_SERVER['PHP_SELF'];
     </div>
   </nav>
   <!-- Navbar Links End  -->
-
-  <?php   

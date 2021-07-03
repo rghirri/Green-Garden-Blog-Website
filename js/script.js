@@ -1,13 +1,3 @@
-// active menu link
-// const currentLocation = location.href;
-// const menuItem = document.querySelectorAll(".nav-link");
-// const menuLength = menuItem.length;
-// for (let i = 0; i < menuLength; i++) {
-//   if (menuItem[i].href === currentLocation) {
-//     menuItem[i].classList.add("active");
-//   }
-// }
-
 jQuery(document).ready(function ($) {
   // date time picker
   jQuery("#published_at").datetimepicker({
@@ -15,7 +5,6 @@ jQuery(document).ready(function ($) {
   });
 
   // delete form
-
   /**
    * Send links of class "delete" via post after a confirmation dialog
    */
@@ -31,7 +20,7 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  // Validation
+  // Validation Form Article
 
   $.validator.addMethod(
     "dateTime",

@@ -1,7 +1,13 @@
 <?php
+//-----------------------------------------------------
+// PHP debug code which I used to test page for errors
+// This code must be remove when the site is ready for 
+// live production.
+//-----------------------------------------------------
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 /**
  * Article
  *
@@ -425,7 +431,7 @@ class Article
     }
 
       /**
-     * Update the image file property
+     * Update the banner image file property
      *
      * @param object $conn Connection to the database
      * @param string $filenameBanner The filename of the image file

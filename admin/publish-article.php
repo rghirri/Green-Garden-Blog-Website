@@ -22,7 +22,7 @@ $article = Article::getByID($conn, $_POST['id']);
 /* This code adds current date to $published_at 
    using  publish($conn) */
 $published_at = $article->publish($conn);
-
 ?>
+
 <!-- Returned published date -->
 <time><?= $published_at ?></time>
