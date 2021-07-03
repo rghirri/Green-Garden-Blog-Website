@@ -11,23 +11,27 @@ require 'includes/init.php';
    check whether username and password 
     is correct */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+  
+/* Get connection to database to access data */
   $conn = require 'includes/db.php';
 
+/* This code calls the authenticate() method in the User class 
+   to check username and password are correct or not */
     if (User::authenticate($conn, $_POST['username'], $_POST['password'])) {
 
         session_regenerate_id(true);
 
         $_SESSION['is_logged_in'] = true;
-
+/* This code redirects to home page if data 
+   entered by user is correct */
         Url::redirect('/');
 
     } else {
-
+/* Error message displayed if data 
+   entered by user is incorrect */
         $error = "Login Incorrect";
     }
 }
-
 ?>
 
 <section class="wrapper  wrapper--narrow wrapper--narrow__height">
