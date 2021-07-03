@@ -1,23 +1,39 @@
 <?php 
+//======================================================================
+// This is the admin index page which will display the list of articles
+//======================================================================
+
+//-----------------------------------------------------
+// PHP debug code which I used to test page for errors
+// This code must be remove when the site is ready for 
+// live production.
+//-----------------------------------------------------
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+/* Include header as part of the code */
 require '../includes/header.php';
 
+/* This page can be only access by admin user. 
+   This code is used to check if admin user is 
+   logged in or not . This is done by calling 
+    the requireLogin() method in Auth class */
 Auth::requireLogin();
 
+/* Get connection to database to access data */
 $conn = require '../includes/db.php';
 
+/* This code calculates offset, limit and $total_pages
+   to get three articles per page */
 $paginator = new Paginator($_GET['page'] ?? 1, 3, Article::getTotal($conn));
 
-
+/* This code gets three articles per page and adds them to $articles */
 $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
-
-
-
 ?>
 
+<!-- PHP and HTML code -->
+<!-- Displays article list -->
 
 <!-- Hero Banner Start  -->
 <div class="hero-banner container-fluid container-xl">
@@ -29,27 +45,24 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
     <h1>The Green Garden Blog Admin</h1>
   </div>
 </div>
-
 <!-- Hero Banner End  -->
 
-<!-- Header End  -->
-
-<!-- Post list begins -->
-
+<!-- This code checks for article availability -->
 <?php if (empty($articles)) : ?>
 <p>No articles found.</p>
 <?php else : ?>
 
+<!-- If there are articles this code is executed-->
+<!-- Post list begins -->
 <section class="wrapper  wrapper--medium">
-
+  <!-- This code Loops the articles and diplays them 
+       in a zigzag layout using the second loop -->
   <?php 
   $i=0;
   foreach ($articles as $article) : 
   $i++;
   if(!($i % 2 == 0 )) : 
-  
   ?>
-
 
   <div class="row pt-5">
     <div class="col-md-6">
@@ -76,7 +89,9 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
               </span>
               <?php endif; ?>
             </p>
-            <p> <?php
+            <p>
+              <!-- Content excerpt -->
+              <?php
                       $string = $article["content"];
                       $max = 150; // or 200, or whatever
                       if(strlen($string) > $max) {
@@ -91,12 +106,12 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
           <a href="article.php?id=<?= $article['id']; ?>"><button class="btn">Edit</button></a>
         </div>
       </div>
-
     </div>
     <div class="col-md-6 ">
       <img class="post-list__image img-fluid" src="/uploads/<?= $article['image_file']; ?>" alt="" class="img-fluid" />
     </div>
   </div>
+  <!-- ------------------------------------------------------------------------------------------------------------------ -->
   <?php else : ?>
   <div class="row pt-5">
     <div class="col-md-6 order-2 order-md-1">
@@ -126,7 +141,9 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
               </span>
               <?php endif; ?>
             </p>
-            <p> <?php
+            <p>
+              <!-- Content excerpt -->
+              <?php
                       $string = $article["content"];
                       $max = 150; // or 200, or whatever
                       if(strlen($string) > $max) {
@@ -135,7 +152,6 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
                         $string = substr($string, 0, strrpos($shorter, ' ')).'...';
                       }
                       echo $string; ?>
-
             </p>
           </div>
           <a href="article.php?id=<?= $article['id']; ?>"><button class="btn">Edit</button></a>
@@ -146,11 +162,11 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
   <?php endif; ?>
   <?php endforeach; ?>
   <?php endif; ?>
-
+  <!-- Post list Pagination begin -->
   <?php require '../includes/pagination.php'; ?>
   <!-- Post list Pagination end -->
 </section>
-
 <!-- Post list Ends -->
 
+<?php /* Include footer as part of the code */ ?>
 <?php require '../includes/footer.php'; ?>

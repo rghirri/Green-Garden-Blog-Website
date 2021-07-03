@@ -1,21 +1,32 @@
 <?php
+//======================================================================
+// This is the edit article page image which will edit the image 
+// banner displayed on the article page.
+//======================================================================
 
+//-----------------------------------------------------
+// PHP debug code which I used to test page for errors
+// This code must be remove when the site is ready for 
+// live production.
+//-----------------------------------------------------
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+/* Include header as part of the code */
  require '../includes/header.php';
 
+ /* This page can be only access by admin user. 
+   This code is used to check if admin user is 
+   logged in or not  */
 Auth::requireLogin();
 
-
-
+/* Get connection to database to access data */
 $conn = require '../includes/db.php';
 
+/* This code checks for the requested article's id to edit it's image. */
 if (isset($_GET['id'])) {
-
 $article = Article::getByID($conn, $_GET['id']);
-
 if ( ! $article) {
 die("article not found");
 }
@@ -24,6 +35,10 @@ die("article not found");
 die("id not supplied, article not found");
 }
 
+/* This code checks for POST requests */
+/* It also checks whether the file uploaded is valid
+   and that there aren't any errors then redirects to 
+   /admin/edit-article-image-banner.php */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   try {
@@ -121,6 +136,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
+<!-- PHP and HTML code -->
+<!-- Get request to update banner image -->
+
 <!-- Hero Banner Start  -->
 <section class="wrapper  wrapper--narrow">
   <div class="text-center">
@@ -138,15 +156,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <?php endif; ?>
 
 </div>
-
-
 <!-- Hero Banner End  -->
 
-<!-- Header End  -->
-
-
-
-
+<!-- PHP and HTML code to instruct admin user to image requirements  -->
 <section class="wrapper  wrapper--narrow">
   <?php if (isset($error)) : ?>
   <p class="text-danger"><?= $error ?></p>

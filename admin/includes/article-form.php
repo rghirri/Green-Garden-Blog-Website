@@ -1,16 +1,33 @@
-<?php if (! empty($article->errors)): ?>
+<?php 
+
+//======================================================================
+// This is the article form which is shared between the edit-article page
+// and the new-article page
+//======================================================================
+
+
+//-----------------------------------------------------
+// Validate form and out put errors if there are any
+// This page also uses javascript and PHP to validate 
+// form
+//-----------------------------------------------------
+if (! empty($article->errors)): ?>
 <ul>
   <?php foreach ($article->errors as $error): ?>
   <li><?= $error ?></li>
   <?php endforeach ?>
 </ul>
-<?php endif;  ?>
+<?php endif;
 
-<?php 
- 
-  $prePage =$_SERVER['HTTP_REFERER'];
-  // var_dump($prePage);
- ?>
+//-----------------------------------------------------
+// $prePage variable which will be used for links 
+//-----------------------------------------------------
+$prePage =$_SERVER['HTTP_REFERER']; 
+
+?>
+
+<!-- PHP and HTML code -->
+<!-- Add data to the database or edit data in the database -->
 
 <div class="row">
   <div class="offset-md-1 col-md-10 offset-md-1">
