@@ -71,7 +71,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
               <?php if ($article['category_names']) : ?>
               <span> | Categories:
                 <?php foreach ($article['category_names'] as $name) : ?>
-                <?= htmlspecialchars($name); ?>
+                <?= htmlspecialchars($name); echo ' ';?>
                 <?php endforeach; ?>
               </span>
               <?php endif; ?>

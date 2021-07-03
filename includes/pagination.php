@@ -3,11 +3,11 @@
  <?php 
  $totalPagination = $paginator->total_pages; 
 //  var_dump($pageNum); 
-  var_dump($totalPagination); 
- var_dump($paginator->next); 
-  var_dump($paginator->previous); 
- var_dump($paginator->limit); 
- var_dump($paginator->offset); 
+  //  var_dump($totalPagination); 
+  // var_dump($paginator->next); 
+ // var_dump($paginator->previous); 
+ // var_dump($paginator->limit); 
+//  var_dump($paginator->offset); 
  ?>
 
  <nav aria-label="page" id="pagination-list">
@@ -28,15 +28,15 @@
      <!-- Loop for pagination numbers begin -->
      <?php 
      $x=$pageNum;
-      if ($x <= 3 ):
+      if ($x <= 3):
         $j=1;
-      while($j <= 3) {?>
+      while($j <= $paginator->next) {?>
      <li class="page-item <?php if ($pageNum == $j): echo "active"; else: ""; endif; ?>"><a class="page-link"
          href="?page=<?= $j; ?>"><?= $j; ?></a></li>
 
      <?php $j++; } 
       
-      elseif($x >= 3  ):
+      elseif($x > 3):
           $j=$x;
           while($j <= $totalPagination) {?>
      <li class="page-item <?php if ($pageNum == $j): echo "active"; else: ""; endif; ?>"><a class="page-link"

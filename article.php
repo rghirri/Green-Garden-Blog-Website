@@ -58,8 +58,7 @@ if (isset($_GET['id'])) {
           <?php if ($article[0]['category_name']) : ?>
           <span> | Categories:
             <?php foreach ($article as $a) : ?>
-            <?= htmlspecialchars($a['category_name']); ?>
-            <?php echo ',' ?>
+            <?= htmlspecialchars($a['category_name']); echo ' '; ?>
             <?php endforeach; ?>
           </span>
           <?php endif; ?>

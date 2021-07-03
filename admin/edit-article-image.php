@@ -124,11 +124,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Hero Banner Start  -->
 <section class="wrapper  wrapper--narrow">
   <div class="text-center">
-    <h2>edit image blog</h2>
+    <h2>Edit blog list image</h2>
   </div>
 </section>
 <div class="hero-banner container-fluid container-xl mb-5">
-
+  <div class="text-center">
+    <h2><?php echo $article->title; ?></h2>
+  </div>
   <?php if ($article->image_file): ?>
   <!-- Display image begin -->
   <img class="hero-banner__overlay-image img-fluid" src="/uploads/<?= $article->image_file; ?>" alt="" />
@@ -144,17 +146,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<?php if (isset($error)) : ?>
-<p><?= $error ?></p>
-<?php endif; ?>
+
 <section class="wrapper  wrapper--narrow">
+  <?php if (isset($error)) : ?>
+  <p class="text-danger"><?= $error ?></p>
+  <?php endif; ?>
   <form method="post" enctype="multipart/form-data">
 
     <div>
-      <h2>Please follow the following instruction for blog image:</h2>
+      <h2>Please follow the following instructions for blog image:</h2>
       <ul>
         <li>The image dimensions need to be 466 x 327 px</li>
         <li>The image file will need to be compressed using https://imagecompressor.com/</li>
+        <li>The image file name needs to be unique and relevent to article</li>
       </ul>
 
     </div>

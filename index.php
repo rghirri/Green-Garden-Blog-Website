@@ -35,11 +35,11 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
 
   <!-- Post list begins -->
 
-  <?php if (empty($articles)) : ?>
-  <p>No articles found.</p>
-  <?php else : ?>
-
   <section class="wrapper  wrapper--medium">
+
+    <?php if (empty($articles)) : ?>
+    <p>No articles found.</p>
+    <?php else : ?>
 
     <?php 
   $i=0;
@@ -65,7 +65,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
                 <?php if ($article['category_names']) : ?>
                 <span> | Categories:
                   <?php foreach ($article['category_names'] as $name) : ?>
-                  <?= htmlspecialchars($name); ?>
+                  <?= htmlspecialchars($name); echo ' '; ?>
                   <?php endforeach; ?>
                 </span>
                 <?php endif; ?>
