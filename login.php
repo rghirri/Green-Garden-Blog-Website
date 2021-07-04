@@ -32,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Login Incorrect";
     }
 }
+// This code adds style to login page
+require 'includes/head-style.php';
 ?>
 
 <section class="wrapper  wrapper--narrow wrapper--narrow__height">
