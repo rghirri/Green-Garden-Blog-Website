@@ -8,7 +8,7 @@ define('DB_PASS', 'rjQ2BtgiCz246XDe');
 // SMTP config
 define('SMTP_HOST', 'mail.rayaa.wdan.uk');
 define('SMTP_USER', 'rghirri@rayaa.wdan.uk');
-define('SMTP_PASS', 'Bread1!Harrisa');
+define('SMTP_PASS', '');
 
 // Error Handling
 //-----------------------------------------------------

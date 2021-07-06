@@ -38,7 +38,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset, true)
   </picture>
 
   <div class="hero-banner__title">
-    <h1>The Green Garden Blog!!!</h1>
+    <h1>The Green Garden Blog</h1>
   </div>
 </div>
 <!-- Hero Banner End  -->

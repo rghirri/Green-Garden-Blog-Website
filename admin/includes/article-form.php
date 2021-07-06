@@ -22,7 +22,7 @@ if (! empty($article->errors)): ?>
 //-----------------------------------------------------
 // $prePage variable which will be used for links 
 //-----------------------------------------------------
-$prePage =$_SERVER['HTTP_REFERER']; 
+// $prePage =$_SERVER['HTTP_REFERER']; 
 
 ?>
 
